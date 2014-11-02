@@ -174,3 +174,17 @@ a:focus{
 #nojs-banner > .content {
 padding-top: 20% !important;
 }
+
+/* dropdown hover style */
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  /*color: #fff;*/
+  text-decoration: none;
+  text-shadow: 1px 2px 3px black;
+}
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+  color: #f6f6f6;
+  background-color: #757575;
+}
