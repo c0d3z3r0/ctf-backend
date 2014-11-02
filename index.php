@@ -62,14 +62,14 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
 
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="home.php" target="#dyncontent">About</a></li>
+            <li class="active"><a href="sites/home.php" target="#dyncontent">Home</a></li>
+            <li><a href="sites/test.php" target="#dyncontent">About</a></li>
             <li><a href="#contact">Contact</a></li>
 
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="home.php" target="#dyncontent">Action</a></li>
+                <li><a href="sites/test.php" target="#dyncontent">Action</a></li>
                 <li><a href="#">Another action</a></li>
                 <li><a href="#">Something else here</a></li>
                 <li class="divider"></li>
@@ -107,10 +107,7 @@
 
     <div id="dyncontent" class="container">
 
-      <div class="content home-content">
-        <h1>Welcome to CTF@HSO ...</h1>
-        <p class="lead">... the Capture the Flag Workshop of the<br>University of Applied Sciences in Offenburg.</p>
-      </div>
+      <?php include('sites/home.php'); ?>
 
     </div><!-- /.container -->
 
