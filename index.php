@@ -31,7 +31,16 @@
 
   <body>
 
-    <div class="container-fluid background center">
+  <noscript>
+  <div id="nojs-banner" class="container">
+    <div class="content home-content">
+        <h1>Welcome to CTF@HSO.</h1>
+        <p class="lead">You need to enable JavaScript to use the backend.<br>Firefox and Chrome are recommended.</p>
+      </div>
+  </div>
+  </noscript>
+
+    <div class="container background center">
       <pre><?php include('background.php'); ?></pre>
     </div>
 

@@ -158,3 +158,19 @@ a:focus{
   filter:     alpha(opacity = 30);    /* IE 6, 7, 8 */
 	-ms-filter: "alpha(opacity = 30)";  /* ab IE 8 zusätzlich möglich */
 }
+
+/* NoScript banner */
+#nojs-banner {
+  width: 100% !important;
+  height: 100% !important;
+  position: fixed;
+  z-index: 1130;
+  background-color: #333;
+  border: 10px red solid;
+  margin: 0;
+  padding: 0;
+  top: 0;
+}
+#nojs-banner > .content {
+padding-top: 20% !important;
+}
