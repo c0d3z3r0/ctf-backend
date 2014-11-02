@@ -11,98 +11,100 @@
   <title>CTF@HSO Backend</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
   <link href="css/custom/style.css" rel="stylesheet">
 
   <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
   <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-  <script src="js/debug/ie-emulation-modes-warning.js"></script>
+  <!--<script src="js/debug/ie-emulation-modes-warning.js"></script>-->
 
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
 
-</head>
-
-
-<body>
-
-  <div class="container-fluid background center">
-    <pre><?php include('background.php'); ?></pre>
-  </div>
+  </head>
 
 
-  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <body>
 
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand disableme" href="#">CTF@HSO</a>
+    <div class="container-fluid background center">
+      <pre><?php include('background.php'); ?></pre>
+    </div>
+
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand disableme" href="#">CTF@HSO</a>
+        </div>
+
+        <!-- menu -->
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#" ref="home.php" target="#dyncontent" class="dynget">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#" class="divlink">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+
+            </li>
+          </ul>
+
+          <form class="navbar-form navbar-right" role="form">
+            <div class="form-group">
+              <input type="text" placeholder="Email" class="form-control input">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" class="form-control input">
+            </div>
+            <div class="btn-group">
+              <button type="submit" class="btn btn-success first-child" id="sign-in">Sign In</button>
+              <div class="btn-group-vertical last-child btn-group-2-right">
+                <button type="submit" class="btn btn-info first-child" id="register">Sign Up</button>
+                <button type="submit" class="btn btn-danger last-child" id="forgotpw">Reset PW</button>
+              </div>
+            </div>
+          </form>
+
+
+        </div><!--/.nav-collapse -->
+
+
+      </div>
+    </div>
+
+
+
+    <div id="dyncontent" class="container">
+
+      <div class="content home-content">
+        <h1>Welcome to CTF@HSO ...</h1>
+        <p class="lead">... the Capture the Flag Workshop of the<br>University of Applied Sciences in Offenburg.</p>
       </div>
 
-      <!-- menu -->
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#" ref="home.php" target="#dyncontent" class="dynget">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#" class="divlink">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li class="dropdown-header">Nav header</li>
-              <li><a href="#">Separated link</a></li>
-              <li><a href="#">One more separated link</a></li>
-            </ul>
-
-          </li>
-        </ul>
-
-        <form class="navbar-form navbar-right" role="form">
-          <div class="form-group">
-            <input type="text" placeholder="Email" class="form-control input">
-          </div>
-          <div class="form-group">
-            <input type="password" placeholder="Password" class="form-control input">
-          </div>
-          <div class="btn-group">
-            <button type="submit" class="btn btn-success first-child" id="sign-in">Sign In</button>
-            <div class="btn-group-vertical last-child btn-group-2-right">
-              <button type="submit" class="btn btn-info first-child" id="register">Sign Up</button>
-              <button type="submit" class="btn btn-danger last-child" id="forgotpw">Reset PW</button>
-            </div>
-          </div>
-        </form>
-
-
-      </div><!--/.nav-collapse -->
-
-
-    </div>
-  </div>
-
-  <div id="dyncontent" class="container">
-
-    <div class="content home-content">
-      <h1>Welcome to CTF@HSO ...</h1>
-      <p class="lead">... the Capture the Flag Workshop of the<br>University of Applied Sciences in Offenburg.</p>
-    </div>
-
-  </div><!-- /.container -->
+    </div><!-- /.container -->
 
 
 
@@ -111,11 +113,12 @@
 <!-- Bootstrap core JavaScript
   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="js/jquery/query-1.11.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
   <script src="js/workarounds/ie10-viewport-bug-workaround.js"></script>
 
+<!-- Custom JavaScript -->
   <script type="text/javascript">
     $(document).ready(function(){
       $('.dynget').click(function(e){
