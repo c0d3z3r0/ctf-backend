@@ -54,7 +54,7 @@
           <ul class="nav navbar-nav">
 
             <li class="active"><a href="#">Home</a></li>
-            <li><a href="#" ref="home.php" target="#dyncontent" class="dynget">About</a></li>
+            <li><a href="home.php" target="#dyncontent">About</a></li>
             <li><a href="#contact">Contact</a></li>
 
             <li class="dropdown">
@@ -68,7 +68,6 @@
                 <li><a href="#">Separated link</a></li>
                 <li><a href="#">One more separated link</a></li>
               </ul>
-
             </li>
           </ul>
 
@@ -80,10 +79,10 @@
               <input type="password" placeholder="Password" class="form-control input">
             </div>
             <div class="btn-group">
-              <button type="submit" class="btn btn-success first-child" id="sign-in">Sign In</button>
+              <button type="submit" class="btn btn-success first-child" name="signin">Sign In</button>
               <div class="btn-group-vertical last-child btn-group-2-right">
-                <button type="submit" class="btn btn-info first-child" id="register">Sign Up</button>
-                <button type="submit" class="btn btn-danger last-child" id="forgotpw">Reset PW</button>
+                <button type="submit" class="btn btn-info first-child" name="register">Sign Up</button>
+                <button type="submit" class="btn btn-danger last-child" name="forgotpw">Reset PW</button>
               </div>
             </div>
           </form>
@@ -113,27 +112,14 @@
 <!-- Bootstrap core JavaScript
   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
-  <script src="js/jquery/query-1.11.1.min.js"></script>
+  <script src="js/jquery/jquery-1.11.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
   <script src="js/workarounds/ie10-viewport-bug-workaround.js"></script>
 
 <!-- Custom JavaScript -->
-  <script type="text/javascript">
-    $(document).ready(function(){
-      $('.dynget').click(function(e){
-        e.preventDefault();
-        var target=$(this).attr('target');
-        $.ajax({
-          type: 'GET', 
-          url: $(this).attr('ref'),
-          success: function(data){
-            $(target).html(data);
-          }
-        });
-      });
-    });
-  </script>
+  <script src="js/custom.js"></script>
+
 
 </body>
 </html>
