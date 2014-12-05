@@ -1,0 +1,18 @@
+{
+    "name": "c0d3z3r0/backend",
+    "description": "CTF Backend",
+    "require": {
+        "ptejada/uflex": "~1.0",
+        "laravel/laravel": "~4.2",
+        "twbs/bootstrap": "~3.3",
+        "components/jquery": "~2.1",
+        "afarkas/html5shiv": "~3.7",
+        "rogeriopradoj/respond": "~1.4"
+    },
+    "authors": [
+        {
+            "name": "Michael Niewöhner",
+            "email": "admin@mniewoehner.de"
+        }
+    ]
+}
