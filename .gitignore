@@ -1,0 +1,10 @@
+**/.*DS_Store
+**/*.pyc
+**/__pycache__
+**/.idea
+**/*.bak
+**/.pydevproject
+**/.project
+/vendor
+/components
+/composer.phar

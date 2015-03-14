@@ -24,21 +24,21 @@
   <!--[if lt IE 9]>
     <script src="js/html5shiv.min.js"></script>
     <script src="js/respond.min.js"></script>
-  <![endif]-->
+    <![endif]-->
 
   </head>
 
 
   <body>
 
-  <noscript>
-  <div id="nojs-banner" class="container">
-    <div class="content home-content">
-        <h1>Welcome to CTF@HSO.</h1>
-        <p class="lead">You need to enable JavaScript to use the backend.<br>Firefox and Chrome are recommended.</p>
+    <noscript>
+      <div id="nojs-banner" class="container">
+        <div class="content home-content">
+          <h1>Welcome to CTF@HSO.</h1>
+          <p class="lead">You need to enable JavaScript to use the backend.<br>Firefox and Chrome are recommended.</p>
+        </div>
       </div>
-  </div>
-  </noscript>
+    </noscript>
 
     <div class="container background center">
       <pre><?php include('background.php'); ?></pre>
@@ -47,22 +47,17 @@
 
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 
-      <div class="container">
+      <div class="container-fluid">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand disableme" href="#">CTF@HSO</a>
+          <span class="navbar-brand disableme">CTF@HSO</span>
         </div>
 
         <!-- menu -->
-        <div class="navbar-collapse collapse">
+        <div class="navbar-left">
           <ul class="nav navbar-nav">
 
-            <li class="active"><a href="sites/home.php" target="#dyncontent">Home</a></li>
+            <li class="active hidden"><a href="sites/home.php" target="#dyncontent">Home</a></li>
+            <li class="active"><a href="sites/submit_flag.php" target="#dyncontent">Home</a></li>
             <li><a href="sites/test.php" target="#dyncontent">About</a></li>
             <li><a href="#contact">Contact</a></li>
 
@@ -79,29 +74,30 @@
               </ul>
             </li>
           </ul>
+        </div>
 
-          
-          <form class="navbar-form navbar-right" role="form">
+        <div class="navbar-right">
+          <form id="loginform" class="navbar-form" role="form" >
             <div id="loginfields" class="form-group">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control input">
+              <div class="form-group form-group-sm">
+                <input type="text" placeholder="User or E-Mail" class="form-control input">
+                <input type="password" placeholder="Password" class="form-control input">
+              </div>
             </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control input">
-            </div>
-            </div>
-            <div class="btn-group">
-              <button id="signin" type="submit" class="btn btn-success first-child" name="signin">Sign In</button>
-              <div id="registerbtns" class="btn-group-vertical last-child btn-group-2-right">
-                <button type="submit" class="btn btn-info first-child" name="register">Sign Up</button>
-                <button type="submit" class="btn btn-danger last-child" name="forgotpw">Reset PW</button>
+            <div class="btn-group btn-group-sm">
+              <button id="signin" type="submit" class="btn btn-sm btn-success first-child" name="signin">Sign In</button>
+              <div id="registerbtns" class="btn-group-sm btn-group-vertical last-child btn-group-2-right">
+                <button type="submit" class="btn btn-info btn-sm first-child" name="register">Sign Up</button>
+                <button type="submit" class="btn btn-danger btn-sm last-child" name="forgotpw">Reset PW</button>
               </div>
             </div>
           </form>
-          
 
+          <ul id="profile" class="nav navbar-nav hidden">
+          <li class="active"><a href="#"><span class="glyphicon glyphicon-user"></span> User</a></li>
+          </ul>
 
-        </div><!--/.nav-collapse -->
+        </div>
 
 
       </div>
@@ -111,7 +107,7 @@
 
     <div id="dyncontent" class="container">
 
-      <?php include('sites/home.php'); ?>
+      <?php include('sites/submit_flag.php'); ?>
 
     </div><!-- /.container -->
 
@@ -127,7 +123,7 @@
   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
   <script src="js/workarounds/ie10-viewport-bug-workaround.js"></script>
 
-<!-- Custom JavaScript -->
+  <!-- Custom JavaScript -->
   <script src="js/custom.js"></script>
 
 
