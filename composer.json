@@ -2,7 +2,7 @@
     "name": "c0d3z3r0/backend",
     "description": "CTF Backend",
     "require": {
-        "ptejada/uflex": "~1.0",
+        "ptejada/uflex": "~1.0"
     },
     "authors": [
         {
