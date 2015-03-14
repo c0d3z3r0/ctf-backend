@@ -10,4 +10,4 @@ Make sure to have npm (node.js package manager), php and curl installed.
 ## Deployment
 Install all dependencies inside the project directory and build a tar file with `./build.sh`.
 Copy the file to your webserver, create `/var/www/backend` and untar it there.
-You will ned to allow FollowSymlinks in your webserver configuration.
+Configure `/var/www/backend/html` as document root. You will need to allow FollowSymlinks in your webserver configuration.
