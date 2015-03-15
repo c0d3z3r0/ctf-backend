@@ -8,3 +8,5 @@
 /vendor
 /components
 /composer.phar
+/bower_components
+/node_modules

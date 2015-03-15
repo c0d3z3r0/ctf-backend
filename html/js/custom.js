@@ -14,13 +14,16 @@ $(document).ready(function(){
         }
       });
 
-      $("li.active").toggleClass("active");
-      $(this).parent().toggleClass("active");
-      $(this).parent().parent().parent().toggleClass("active");
+      $("li.active").removeClass("active");
+      $(this).parent().addClass("active");
+      d=$(this).parent().parent().parent();
+      if(d.hasClass("dropdown")) {
+        d.toggleClass("active");
         // dropdown hover close-on-click handler
         $(".dropdown-menu").css("display","none");
       }
-    });
+    }
+  });
 
   /** dropdown on hover **/
   $('.dropdown').on({

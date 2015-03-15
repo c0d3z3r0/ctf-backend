@@ -3,52 +3,85 @@ body {
   height: 100%;
 
   background-color: #3f3f3f;
-  color: #fff;
+  /*color: #fff;*/
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
 }
 
-.hidden {
-  display: none;
+/*
+h1,h2,h3,h4,h5,h6,p {
+  color: #fff;
 }
+*/
+
+/* remove dotted line around links */
+a:focus{
+  outline: 0;
+}
+
+
+
+/* ctf hex background */
+.background {
+  border: 0;
+  width: 45%;
+}
+.background > pre{
+  color: green;
+  font-family: Courier, monospace;
+  padding-top: 20px;
+  /*padding-left: 20px;*/
+  text-align: left;
+  border: 0;
+  background-color: transparent;
+  position: fixed;
+  z-index: -1;
+
+  opacity: 0.3; /* opacity [0-1] */
+  -moz-opacity: 0.3; /* opacity [0-1] */
+  -webkit-opacity: 0.3; /* opacity [0-1] */
+  filter:     alpha(opacity = 30);    /* IE 6, 7, 8 */
+  -ms-filter: "alpha(opacity = 30)";  /* ab IE 8 zusätzlich möglich */
+}
+
+
+
+/* NoScript banner */
+#nojs-banner {
+  width: 100% !important;
+  height: 100% !important;
+  position: fixed;
+  z-index: 1130;
+  background-color: #333;
+  border: 10px red solid;
+  margin: 0;
+  padding: 0;
+  top: 0;
+}
+#nojs-banner > .content {
+padding-top: 20% !important;
+}
+
+
 
 /** content container */
 .content {
   padding: 40px 15px;
-  text-align: center;
   background-color: transparent;
 }
-
-/* home container */
+.content > h1,
+.content > h2,
+.content > h3,
+.content > h4,
+.content > h5,
+.content > h6,
+.content > p {
+  text-align: center;
+  color: #fff;
+}
+/* middle container */
 .content-middle {
 	padding-top: 15%;
 }
-
-.navbar {
-	border: 0; /* fix 1px under menu */
-  min-height: 40px;
-}
-
-.navbar-brand {
-  height: 40px;
-  padding: 10px 15px;
-}
-
-.navbar-nav > li > a {
-  padding: 10px 15px;
-  line-height: 20px;
-}
-
-.navbar-form {
-  margin-top: 5px;
-  margin-bottom: 3px;
-}
-
-/*
-.container {
-	border: 1px solid white;
-}
-*/
-
 /* horizontal center a element */
 .center {
      float: none;
@@ -57,51 +90,28 @@ body {
      /* IE fix */
      margin-left:27%\9;
 }
-
-/* disable pointer events */
-.disableme {
-    pointer-events: none;
-}
-
-/* remove dotted line around links */
-a:focus{
-	outline: 0;
-}
-
-/* size fix for button groups */
-.btn-group-2 .btn  {
-    width: 50%;
-}
-.btn-group-3 .btn  {
-    width: 33.3%;
-}
-
-.btn-group-2-right .btn {
-  padding: 0 5px;
-  font-size: 11px;
-  line-height: 1.0;
-}
-.btn-group-2-right > .btn:first-child:not(:last-child) {
-  border-top-left-radius: 0;
-  border-top-right-radius: 4px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  padding-top: 1px;
-  padding-bottom: 2px;
-
-}
-.btn-group-2-right > .btn:last-child:not(:first-child) {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 4px;
-  padding-top: 1px;
-  padding-bottom: 1px;
+.hidden {
+  display: none;
 }
 
 
 
-
+.navbar {
+	border: 0; /* fix 1px under menu */
+  min-height: 40px;
+}
+.navbar-brand {
+  height: 40px;
+  padding: 10px 15px;
+}
+.navbar-nav > li > a {
+  padding: 10px 15px;
+  line-height: 20px;
+}
+.navbar-form {
+  margin-top: 5px;
+  margin-bottom: 3px;
+}
 /* title color */
 .navbar-inverse {
   background-color: #000;
@@ -116,6 +126,78 @@ a:focus{
 .navbar-inverse .navbar-brand {
   color: #00cc00;
 }
+
+
+
+.dropdown-menu {
+  background-color: #000;
+  border: 0;
+}
+.dropdown-menu .divider {
+  background-color: #9d9d9d;
+}
+.dropdown-menu > li > a {
+  color: #9d9d9d;
+}
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  color: #000;
+  background-color: #ddd;
+}
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+  color: #fff;
+  background-color: #444;
+}
+/* white menu
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  text-decoration: none;
+  text-shadow: 1px 2px 3px black;
+}
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+  color: #f6f6f6;
+  background-color: #757575;
+}
+*/
+.dropdown-toggle {
+    pointer-events: none;
+}
+
+
+/* size fix for button groups */
+.btn-group-2 .btn  {
+    width: 50%;
+}
+.btn-group-3 .btn  {
+    width: 33.3%;
+}
+.btn-group-2-right .btn {
+  padding: 0 5px;
+  font-size: 11px;
+  line-height: 1.0;
+}
+.btn-group-2-right > .btn:first-child:not(:last-child) {
+  border-top-left-radius: 0;
+  border-top-right-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  padding-top: 1px;
+  padding-bottom: 2px;
+}
+.btn-group-2-right > .btn:last-child:not(:first-child) {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 4px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+
 
 /* button colors */
 .btn-success {
@@ -159,69 +241,15 @@ a:focus{
   border-color: #bd2723;
 }
 
-/* ctf hex background */
-.background {
-	border: 0;
-	width: 45%;	
-}
-.background > pre{
-	color: green;
-	font-family: Courier, monospace;
-	padding-top: 20px;
-	/*padding-left: 20px;*/
-	text-align: left;
-	border: 0;
-	background-color: transparent;
-	position: fixed;
-	z-index: -1;
 
-	opacity: 0.3; /* opacity [0-1] */
-  -moz-opacity: 0.3; /* opacity [0-1] */
-  -webkit-opacity: 0.3; /* opacity [0-1] */
-  filter:     alpha(opacity = 30);    /* IE 6, 7, 8 */
-	-ms-filter: "alpha(opacity = 30)";  /* ab IE 8 zusätzlich möglich */
-}
-
-/* NoScript banner */
-#nojs-banner {
-  width: 100% !important;
-  height: 100% !important;
-  position: fixed;
-  z-index: 1130;
-  background-color: #333;
-  border: 10px red solid;
-  margin: 0;
-  padding: 0;
-  top: 0;
-}
-#nojs-banner > .content {
-padding-top: 20% !important;
-}
-
-/* dropdown hover style */
-.dropdown-menu > li > a:hover,
-.dropdown-menu > li > a:focus {
-  /*color: #fff;*/
-  text-decoration: none;
-  text-shadow: 1px 2px 3px black;
-}
-.dropdown-menu > .active > a,
-.dropdown-menu > .active > a:hover,
-.dropdown-menu > .active > a:focus {
-  color: #f6f6f6;
-  background-color: #757575;
-}
 
 .alert {
   padding: 3px;
   margin-bottom: 20px;
+  text-align: center;
 }
 
-/*
-.input-group {
-box-shadow: 5px 5px 15px 5px rgba(0,0,0, 0.3); 
-}
-*/
+
 
 .input-group,
 div.shadow {

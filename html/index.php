@@ -4,21 +4,17 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="description" content="CTF@HSO Backend">
+  <meta name="author" content="Michael Niewöhner">
   <link rel="icon" href="favicon.ico">
 
   <title>CTF@HSO Backend</title>
 
-  <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
   <link href="css/custom/style.css" rel="stylesheet">
+  <link href="css/c3.min.css" rel="stylesheet">
 
-  <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-  <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-  <!--<script src="js/debug/ie-emulation-modes-warning.js"></script>-->
+
 
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -40,7 +36,7 @@
       </div>
     </noscript>
 
-    <div class="container background center">
+    <div class="container background">
       <pre><?php include('background.php'); ?></pre>
     </div>
 
@@ -56,28 +52,20 @@
         <div class="navbar-left">
           <ul class="nav navbar-nav">
 
-            <li class="active hidden"><a href="sites/home.php" target="#dyncontent">Home</a></li>
-            <li class="active"><a href="sites/submit_flag.php" target="#dyncontent">Home</a></li>
-            <li><a href="sites/test.php" target="#dyncontent">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li class="outside active"><a href="sites/home.php" target="#dyncontent">Home</a></li>
+            <li class="inside"><a href="sites/flag.php" target="#dyncontent">Submit Flag</a></li>
+            <li class=""><a href="sites/scores.php" target="#dyncontent">Scoreboard</a></li>
+            <li class=""><a href="sites/stats.php" target="#dyncontent">Statistics</a></li>
+            <li class="inside"><a href="sites/stats.php" target="#dyncontent">Challenges</a></li>
+            <li class="inside"><a href="sites/stats.php" target="#dyncontent">Hints</a></li>
+            <li class="inside"><a href="sites/stats.php" target="#dyncontent">Bugtracker</a></li>
 
-            <li class="dropdown">
-              <a href="" class="dropdown-toggle disableme" data-toggle="dropdown">Dropdown<span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="sites/test.php" target="#dyncontent">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
           </ul>
         </div>
 
         <div class="navbar-right">
-          <form id="loginform" class="navbar-form" role="form" >
+
+          <form id="loginform" class="navbar-form hidden" role="form" >
             <div id="loginfields" class="form-group">
               <div class="form-group form-group-sm">
                 <input type="text" placeholder="User or E-Mail" class="form-control input">
@@ -93,8 +81,29 @@
             </div>
           </form>
 
-          <ul id="profile" class="nav navbar-nav hidden">
-          <li class="active"><a href="#"><span class="glyphicon glyphicon-user"></span> User</a></li>
+
+          <ul id="profile" class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                <span class="glyphicon glyphicon-user"></span> <span class="caret"></span>
+              </a>
+
+              <ul class="dropdown-menu" role="menu">
+                <li class="dropdown-header">c0d3z3r0</li>
+                <li><a href="sites/test.php" target="#dyncontent">User Settings</a></li>
+                <li class="divider"></li>
+
+                <li class="admin dropdown-header">Administration</li>
+                <li class="admin"><a href="sites/test.php" target="#dyncontent">General Settings</a></li>
+                <li class="admin"><a href="sites/test.php" target="#dyncontent">Users</a></li>
+                <li class="admin"><a href="sites/test.php" target="#dyncontent">Challenges</a></li>
+                <li class="admin"><a href="sites/test.php" target="#dyncontent">Hints</a></li>
+                <li class="admin"><a href="sites/test.php" target="#dyncontent">Bugtracker</a></li>
+                <li class="admin divider"></li>
+
+                <li><a href="sites/test.php" target="#dyncontent">Logout</a></li>
+              </ul>
+            </li>
           </ul>
 
         </div>
@@ -114,19 +123,17 @@
 
 
 
+    <!-- JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/d3.min.js"></script>
+    <script src="js/c3.min.js"></script>
 
-<!-- Bootstrap core JavaScript
-  ================================================== -->
-  <!-- Placed at the end of the document so the pages load faster -->
-  <script src="js/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-  <script src="js/workarounds/ie10-viewport-bug-workaround.js"></script>
-
-  <!-- Custom JavaScript -->
-  <script src="js/custom.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="js/custom.js"></script>
 
 
-</body>
-</html>
+  </body>
+  </html>
 
