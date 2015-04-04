@@ -45,7 +45,7 @@
 
       <div class="container-fluid">
         <div class="navbar-header">
-          <span class="navbar-brand disableme">CTF@HSO</span>
+          <span class="navbar-brand">CTF@HSO</span>
         </div>
 
         <!-- menu -->
@@ -53,15 +53,15 @@
           <ul class="nav navbar-nav">
 
             <li class="outside active"><a href="sites/home.php" target="#dyncontent">Home</a></li>
-            <li class="inside"><a href="sites/flag.php" target="#dyncontent">Submit Flag</a></li>
+            <li class="inside hidden"><a href="sites/flag.php" target="#dyncontent">Submit Flag</a></li>
             <li class=""><a href="sites/scores.php" target="#dyncontent">Scoreboard</a></li>
-            <li class=""><a href="sites/stats.php" target="#dyncontent">Statistics</a></li>
-            <li class="inside"><a href="sites/stats.php" target="#dyncontent">Challenges</a></li>
-            <li class="inside"><a href="sites/stats.php" target="#dyncontent">Hints</a></li>
-            <li class="inside"><a href="sites/stats.php" target="#dyncontent">Bugtracker</a></li>
+            <li class="hidden"><a href="sites/stats.php" target="#dyncontent">Statistics</a></li>
+            <li class="inside hidden"><a href="sites/stats.php" target="#dyncontent">Challenges</a></li>
+            <li class="inside hidden"><a href="sites/stats.php" target="#dyncontent">Hints</a></li>
+            <li class="inside hidden"><a href="sites/stats.php" target="#dyncontent">Ticket Manager</a></li>
 
           </ul>
-        </div>
+        </div> <!-- /menu -->
 
         <div class="navbar-right">
 
@@ -82,9 +82,10 @@
           </form>
 
 
+          <!-- profile -->
           <ul id="profile" class="nav navbar-nav">
             <li class="dropdown">
-              <a href="" class="dropdown-toggle" data-toggle="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown">
                 <span class="glyphicon glyphicon-user"></span> <span class="caret"></span>
               </a>
 
@@ -93,33 +94,33 @@
                 <li><a href="sites/test.php" target="#dyncontent">User Settings</a></li>
                 <li class="divider"></li>
 
-                <li class="admin dropdown-header">Administration</li>
-                <li class="admin"><a href="sites/test.php" target="#dyncontent">General Settings</a></li>
-                <li class="admin"><a href="sites/test.php" target="#dyncontent">Users</a></li>
-                <li class="admin"><a href="sites/test.php" target="#dyncontent">Challenges</a></li>
-                <li class="admin"><a href="sites/test.php" target="#dyncontent">Hints</a></li>
-                <li class="admin"><a href="sites/test.php" target="#dyncontent">Bugtracker</a></li>
-                <li class="admin divider"></li>
+                <!-- Admin menu - only visible for admins -->
+                <li class="dropdown-header">Administration</li>
+                <li class=""><a href="sites/test.php" target="#dyncontent">General Settings</a></li>
+                <li class=""><a href="sites/test.php" target="#dyncontent">Users</a></li>
+                <li class=""><a href="sites/test.php" target="#dyncontent">Challenges</a></li>
+                <li class=""><a href="sites/test.php" target="#dyncontent">Hints</a></li>
+                <li class=""><a href="sites/test.php" target="#dyncontent">Ticket Manager</a></li>
+                <li class="divider"></li>
+                <!-- / admin menu -->
 
                 <li><a href="sites/test.php" target="#dyncontent">Logout</a></li>
               </ul>
             </li>
-          </ul>
+          </ul> <!-- /profile -->
 
-        </div>
-
-
-      </div>
-    </div>
+        </div> <!-- /navbar-right -->
+      </div> <!-- /container-fluid -->
+    </div> <!-- /navbar -->
 
 
 
+    <!-- dyncontent -->
     <div id="dyncontent" class="container">
 
       <?php include('sites/submit_flag.php'); ?>
 
-    </div><!-- /.container -->
-
+    </div><!-- /dyncontent -->
 
 
 

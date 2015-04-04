@@ -5,24 +5,22 @@
 
 	<div class="col-md-2"></div>
 	<div class="col-md-8">
+		<div class="panel panel-default shadow hidden">
+				<div id="scoreboard"></div>
+		</div>
 		<div class="panel panel-default shadow">
-			<div class="panel-body">
-		<div id="scoreboard"></div>
-		</div></div>
-		<div class="panel panel-default shadow">
-			<div class="panel-body">
-				<table class="table">
+				<table class="table table-striped">
 					<thead>
 						<tr>
-						<th class="col-md-1">#</th>
-							<th class="col-md-2">User</th>
+							<th class="col-md-1">#</th>
+							<th class="col-md-3">User</th>
 							<th class="col-md-2">Course</th>
 							<th class="col-md-2">Semester</th>
 							<th class="col-md-2">Points</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
+						<tr class="mark">
 							<td>1</td>
 							<td>c0d3z3r0</td>
 							<td>UNITS</td>
@@ -46,19 +44,19 @@
 					</tbody>
 				</table>
 			</div>
-		</div>
 	</div>
 	<div class="col-md-2"></div>
 
+	<!--
 	<script type="text/javascript">
-	var chart = c3.generate({
-    bindto: '#scoreboard',
-    data: {
-      columns: [
-        ['data1', 30, 200, 100, 400, 150, 250],
-        ['data2', 50, 20, 10, 40, 15, 25]
-      ]
-    }
-});
-	</script>
+		var chart = c3.generate({
+			bindto: '#scoreboard',
+			data: {
+				columns: [
+				['data1', 30, 200, 100, 400, 150, 250],
+				['data2', 50, 20, 10, 40, 15, 25]
+				]
+			}
+		});
+	</script>-->
 </div>

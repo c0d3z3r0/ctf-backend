@@ -7,11 +7,7 @@ body {
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
 }
 
-/*
-h1,h2,h3,h4,h5,h6,p {
-  color: #fff;
-}
-*/
+
 
 /* remove dotted line around links */
 a:focus{
@@ -95,6 +91,27 @@ padding-top: 20% !important;
 }
 
 
+.table > tbody > tr.mark {
+  background-color: #c9c9c9;
+  font-weight: 600;
+}
+
+
+.panel > .table,
+.panel > .panel-body > .table,
+.panel > .table-responsive > .table,
+.panel > .panel-collapse > .table {
+  margin-bottom: 0;
+}
+
+
+
+.panel > #scoreboard {
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+
 
 .navbar {
 	border: 0; /* fix 1px under menu */
@@ -123,8 +140,10 @@ padding-top: 20% !important;
   color: #fff;
   background-color: #222;
 }
-.navbar-inverse .navbar-brand {
-  color: #00cc00;
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-brand:focus {
+  color: #0c0;
 }
 
 
