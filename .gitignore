@@ -10,7 +10,7 @@
 /components
 /composer.phar
 /bower_components
-/resources/assetes/bower
+/resources/assets/bower
 /node_modules
 /.env
 /public/build

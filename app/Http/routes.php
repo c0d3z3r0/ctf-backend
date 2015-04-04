@@ -11,4 +11,10 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', function() {
+	return View::make('index');
+});
+
+Route::get('content/{site}', function($site) {
+	return View::make("content.$site");
+});
