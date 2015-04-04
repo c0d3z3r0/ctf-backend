@@ -5,8 +5,15 @@
 **/*.bak
 **/.pydevproject
 **/.project
+**/Thumbs.db
 /vendor
 /components
 /composer.phar
 /bower_components
+/resources/assetes/bower
 /node_modules
+/.env
+/public/build
+/public/js
+/public/css
+/public/fonts
