@@ -8,18 +8,18 @@
     <div class="navbar-left">
       <ul class="nav navbar-nav">
         <li class="outside active"> <a href="{{ url('content/home') }}" target="#dyncontent">Home</a></li>
-        <li class="inside hidden">  <a href="{{ url('content/submit_flag') }}" target="#dyncontent">Submit Flag</a></li>
-        <li class="">               <a href="{{ url('content/scores') }}" target="#dyncontent">Scoreboard</a></li>
-        <li class="hidden">         <a href="{{ url('content/stats') }}" target="#dyncontent">Statistics</a></li>
-        <li class="inside hidden">  <a href="{{ url('content/stats') }}" target="#dyncontent">Challenges</a></li>
-        <li class="inside hidden">  <a href="{{ url('content/stats') }}" target="#dyncontent">Hints</a></li>
-        <li class="inside hidden">  <a href="{{ url('content/test') }}" target="#dyncontent">Ticket Manager</a></li>
+        <li class="inside hidden"> <a href="{{ url('content/submit_flag') }}" target="#dyncontent">Submit Flag</a></li>
+        <li class=""> <a href="{{ url('content/scores') }}" target="#dyncontent">Scoreboard</a></li>
+        <li class="hidden"> <a href="{{ url('content/stats') }}" target="#dyncontent">Statistics</a></li>
+        <li class="inside hidden"> <a href="{{ url('content/stats') }}" target="#dyncontent">Challenges</a></li>
+        <li class="inside hidden"> <a href="{{ url('content/stats') }}" target="#dyncontent">Hints</a></li>
+        <li class="inside hidden"> <a href="{{ url('content/test') }}" target="#dyncontent">Ticket Manager</a></li>
       </ul>
-    </div> <!-- /menu -->
+    </div>
 
-
+    <!-- /menu -->
     <div class="navbar-right">
-      <form id="loginform" class="navbar-form hidden" role="form" >
+      <form id="loginform" class="navbar-form hidden" role="form">
         <div id="loginfields" class="form-group">
           <div class="form-group form-group-sm">
             <input type="text" placeholder="User or E-Mail" class="form-control input">
@@ -39,7 +39,8 @@
       <ul id="profile" class="nav navbar-nav">
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown">
-            <span class="glyphicon glyphicon-user"></span> <span class="caret"></span>
+            <span class="glyphicon glyphicon-user"></span>
+            <span class="caret"></span>
           </a>
 
           <ul class="dropdown-menu" role="menu">
@@ -60,10 +61,14 @@
             <li><a href="{{ url('content/test') }}" target="#dyncontent">Logout</a></li>
           </ul>
         </li>
-      </ul> <!-- /profile -->
+      </ul>
+      <!-- /profile -->
 
-    </div> <!-- /navbar-right -->
+    </div>
+    <!-- /navbar-right -->
 
-  </div> <!-- /container-fluid -->
-  
-</div> <!-- /navbar -->
+  </div>
+  <!-- /container-fluid -->
+
+</div>
+<!-- /navbar -->
