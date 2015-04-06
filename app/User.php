@@ -10,25 +10,22 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	use Authenticatable, CanResetPassword;
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'users';
+	protected $fillable = [ 'name', 'email', 'password', 'confirmed' ,'confirmation_code' ];
 
-	/**
-	 * The attributes that are mass assignable.
-	 *
-	 * @var array
-	 */
-	protected $fillable = ['name', 'email', 'password'];
+	protected $hidden = [ 'password', 'confirmation_code', 'remember_token' ];
 
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-	protected $hidden = ['password', 'remember_token'];
+
+	public function flags()
+	{
+		return $this->belongsToMany('User')
+								->withTimestamps()
+								->withPivot('solution');
+	}
+
+	public function hints()
+	{
+		return $this->belongsToMany('Hint')
+								->withTimestamps();
+	}
 
 }
