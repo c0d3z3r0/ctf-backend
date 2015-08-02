@@ -1,5 +1,7 @@
 from django.db import models
 from django_extensions.db.models import TimeStampedModel
+from django.contrib.auth.models import User
+
 # Create your models here.
 
 
@@ -23,6 +25,7 @@ class Flag(TimeStampedModel):
     credits = models.PositiveIntegerField()
 
     challenge = models.ForeignKey(Challenge)
+    user = models.ManyToManyField(User, through='Solve')
 
     def __str__(self):
         return self.flag
@@ -34,21 +37,25 @@ class Hint(TimeStampedModel):
     price = models.PositiveIntegerField()
 
     challenge = models.ForeignKey(Challenge)
+    user = models.ManyToManyField(User, through='BuyHint')
 
     def __str__(self):
         return self.name
 
 
-class User(TimeStampedModel):
-    firstname = models.CharField(max_length=50)
-    lastname = models.CharField(max_length=50)
-    email = models.EmailField()
-    username = models.CharField(max_length=50)
-    password = models.CharField(max_length=100)
+class Solve(TimeStampedModel):
+    solution = models.TextField()
 
-    admin = models.BooleanField(default=0)
-    confirmed = models.BooleanField(default=0)
+    flag = models.ForeignKey(Flag)
+    user = models.ForeignKey(User)
 
     def __str__(self):
-        return self.username + ' / ' +\
-            ' '.join([self.firstname, self.lastname])
+        return ': '.join([self.flag.flag, self.flag.challenge.name])
+
+
+class BuyHint(TimeStampedModel):
+    hint = models.ForeignKey(Hint)
+    user = models.ForeignKey(User)
+
+    def __str__(self):
+        return ': '.join([self.hint.name, self.user.username])
