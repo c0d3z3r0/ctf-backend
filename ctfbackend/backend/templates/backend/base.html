@@ -34,7 +34,9 @@
 
 
 <div class="container background">
-    <pre>{% include 'backend/background.html' %}</pre>
+    {% block background %}
+        {% include 'backend/background.html' %}
+    {% endblock background %}
 </div>
 
 
