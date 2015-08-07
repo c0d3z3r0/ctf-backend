@@ -16,6 +16,7 @@ class Challenge(TimeStampedModel):
     name = models.CharField(max_length=50)
     description = models.TextField()
     link = models.URLField(blank=True)
+    status = models.BooleanField(default=False)
 
     categories = models.ManyToManyField(Category)
 
