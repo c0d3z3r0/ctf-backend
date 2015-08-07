@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load staticfiles %}
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{% firstof title 'CTF Backend' %}">
+    <meta name="author" content="Michael Niewöhner">
+    <link rel="icon" href="{% static 'backend/favicon.ico' %}">
+
+    <title>{% firstof title 'CTF Backend' %}</title>
+
+    <link href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'c3/c3.min.css' %}" rel="stylesheet">
+    <link href="{% static 'backend/custom.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+{% comment NoJS - maybe needed later %}
+<noscript>
+    <div id="nojs-banner" class="container">
+        <div class="content home-content">
+            <h1>Welcome to CTF@HSO.</h1>
+            <p class="lead">You need to enable JavaScript to use the backend.
+                <br>Please use Firefox or Chrome.</p>
+        </div>
+    </div>
+</noscript>
+{% endcomment %}
+
+
+<div class="container background">
+    <pre>{% include 'backend/background.html' %}</pre>
+</div>
+
+
+{% include 'backend/navbar.html' %}
+
+
+<div id="dyncontent" class="container">
+    {% block dyncontent %}
+        <div class="content content-middle">
+            <h1>{{ home_title }}</h1>
+            <p class="lead">{{ home_lead|safe }}</p>
+        </div>
+    {% endblock dyncontent%}
+</div>
+
+
+<!-- JavaScript -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
+<script src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'd3/d3.min.js' %}"></script>
+<script src="{% static 'c3/c3.min.js' %}"></script>
+<script src="{% static 'backend/custom.js' %}"></script>
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+<script src="{% static 'html5shiv/dist/html5shiv.min.js' %}"></script>
+<script src="{% static 'respondJs/dest/respond.min.js' %}"></script>
+<![endif]-->
+
+</body>
+</html>
