@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'django_extensions',
+    'dynamic_preferences',
 
     'ctfbackend.backend',
 )
@@ -67,6 +68,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'dynamic_preferences.processors.global_preferences',
             ],
         },
     },
@@ -110,3 +113,14 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_DIR, 'static/bower_components'),
 )
 
+
+# Django dynamic preferences
+DYNAMIC_PREFERENCES = {
+
+    # a python attribute that will be added to model instances with preferences
+    # override this if the default collide with one of your models attributes/fields
+    'MANAGER_ATTRIBUTE': 'preferences',
+
+    # The python module in which registered preferences will be searched within each app
+    'REGISTRY_MODULE': 'dynprefs',
+}
