@@ -7,11 +7,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{% firstof title 'CTF Backend' %}">
+    <meta name="description" content="{% firstof sitename 'CTF Backend' %}">
     <meta name="author" content="Michael Niewöhner">
     <link rel="icon" type="image/png" href="{% static '/favicon.png' %}">
 
-    <title>{% firstof title 'CTF Backend' %}</title>
+    <title>{% firstof sitename 'CTF Backend' %}</title>
 
     <link href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'c3/c3.min.css' %}" rel="stylesheet">
@@ -46,8 +46,8 @@
 <div id="dyncontent" class="container">
     {% block dyncontent %}
         <div class="content content-middle">
-            <h1>{{ home_title }}</h1>
-            <p class="lead">{{ home_lead|safe }}</p>
+            <h1>{{ title }}</h1>
+            <p class="lead">{{ lead|safe }}</p>
         </div>
     {% endblock dyncontent%}
 </div>
