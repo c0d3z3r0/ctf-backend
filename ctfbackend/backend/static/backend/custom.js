@@ -1,13 +1,13 @@
 $(document).ready(function(){
 
-  /* dynamic content link handler */
+/*  /!* dynamic content link handler *!/
   $("a").click(function(e){
     var target=$(this).attr('target');
-    if(target.match(/^_.*/) == null){
+    if(target.match(/^_.*!/) == null){
       e.preventDefault();
 
       $.ajax({
-        type: 'GET', 
+        type: 'GET',
         url: $(this).attr('href'),
         success: function(data){
           $(target).html(data);
@@ -23,7 +23,7 @@ $(document).ready(function(){
         $(".dropdown-menu").css("display","none");
       }
     }
-  });
+  });*/
 
   /** dropdown on hover **/
   $('.dropdown').on({
