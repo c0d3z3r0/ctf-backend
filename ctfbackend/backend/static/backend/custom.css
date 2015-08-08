@@ -8,23 +8,23 @@ body {
 }
 
 
-
 /* remove dotted line around links */
 a:focus{
   outline: 0;
 }
 
 
-
 /* ctf hex background */
 .background {
   border: 0;
   width: 45%;
+  padding-left: 0px;
 }
 .background > pre{
   color: green;
   font-family: Courier, monospace;
-  padding-top: 20px;
+  padding-top: 0px;
+  top: -10px;
   /*padding-left: 20px;*/
   text-align: left;
   border: 0;
@@ -40,7 +40,6 @@ a:focus{
 }
 
 
-
 /* NoScript banner */
 #nojs-banner {
   width: 100% !important;
@@ -54,9 +53,8 @@ a:focus{
   top: 0;
 }
 #nojs-banner > .content {
-padding-top: 20% !important;
+  padding-top: 20% !important;
 }
-
 
 
 /** content container */
@@ -76,15 +74,15 @@ padding-top: 20% !important;
 }
 /* middle container */
 .content-middle {
-	padding-top: 15%;
+  padding-top: 15%;
 }
 /* horizontal center a element */
 .center {
-     float: none;
-     margin-left: auto;
-     margin-right: auto;
-     /* IE fix */
-     margin-left:27%\9;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+  /* IE fix */
+  margin-left:27%\9;
 }
 .hidden {
   display: none;
@@ -105,16 +103,14 @@ padding-top: 20% !important;
 }
 
 
-
 .panel > #scoreboard {
   margin-top: 5px;
   margin-right: 5px;
 }
 
 
-
 .navbar {
-	border: 0; /* fix 1px under menu */
+  border: 0; /* fix 1px under menu */
   min-height: 40px;
 }
 .navbar-brand {
@@ -138,14 +134,13 @@ padding-top: 20% !important;
 .navbar-inverse .navbar-nav > .active > a:hover,
 .navbar-inverse .navbar-nav > .active > a:focus {
   color: #fff;
-  background-color: #222;
+  background-color: #333;
 }
 .navbar-inverse .navbar-brand,
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {
   color: #0c0;
 }
-
 
 
 .dropdown-menu {
@@ -183,16 +178,25 @@ padding-top: 20% !important;
 }
 */
 .dropdown-toggle {
-    pointer-events: none;
+  pointer-events: none;
+}
+.dropdown-header {
+  color: #ccc;
+}
+.dropdown-header.username {
+  color: #eee;
+}
+.dropdown-header.username {
+  font-size: 13px;
 }
 
 
 /* size fix for button groups */
 .btn-group-2 .btn  {
-    width: 50%;
+  width: 50%;
 }
 .btn-group-3 .btn  {
-    width: 33.3%;
+  width: 33.3%;
 }
 .btn-group-2-right .btn {
   padding: 0 5px;
@@ -215,7 +219,6 @@ padding-top: 20% !important;
   padding-top: 1px;
   padding-bottom: 1px;
 }
-
 
 
 /* button colors */
@@ -261,13 +264,11 @@ padding-top: 20% !important;
 }
 
 
-
 .alert {
   padding: 3px;
   margin-bottom: 20px;
   text-align: center;
 }
-
 
 
 .input-group,
