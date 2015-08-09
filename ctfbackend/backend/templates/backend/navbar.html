@@ -1,3 +1,6 @@
+{% load widget_tweaks %}
+{% load backend_extras %}
+
 <!-- navbar -->
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- container-fluid -->
@@ -9,64 +12,78 @@
         <!-- menu -->
         <div class="navbar-left">
             <ul class="nav navbar-nav">
-                <li class="outside active"> <a href="{# {{ url('content/home') }} #}" {# target="#dyncontent" #}>Home</a></li>
-                <li class="inside hidden"> <a href="{# {{ url('content/submit_flag') }} #}" {# target="#dyncontent" #}>Submit Flag</a></li>
-                <li class=""> <a href="{# {{ url('content/scores') }} #}" {# target="#dyncontent" #}>Scoreboard</a></li>
-                <li class="hidden"> <a href="{# {{ url('content/stats') }} #}" {# target="#dyncontent" #}>Statistics</a></li>
-                <li class="inside hidden"> <a href="{# {{ url('content/stats') }} #}" {# target="#dyncontent" #}>Challenges</a></li>
-                <li class="inside hidden"> <a href="{# {{ url('content/stats') }} #}" {# target="#dyncontent" #}>Hints</a></li>
-                <li class="inside hidden"> <a href="{# {{ url('content/test') }} #}" {# target="#dyncontent" #}>Ticket Manager</a></li>
+                <li class="{% navactive request 'home' %}"> <a href="{% url 'home' %}">Home</a></li>
+
+                {% if user.is_authenticated %}
+                    <li class="{% navactive request 'submit' %}"> <a href="{% url 'submit' %}">Submit Flag</a></li>
+                {% endif %}
+
+                <li class="{% navactive request 'scores' %}"> <a href="{% url 'scores' %}">Scoreboard</a></li>
+                <li class="tab-stats"> <a href="{% url 'stats' %}">Statistics</a></li>
+
+                {% if user.is_authenticated %}
+                    <li class="{% navactive request 'chals' %}"> <a href="{% url 'chals' %}">Challenges</a></li>
+                    <li class="{% navactive request 'bugtracker' %}"> <a href="{% url 'bugtracker' %}">Bugtracker</a></li>
+                {% endif %}
             </ul>
         </div>
         <!-- /menu -->
 
         <!-- navbar-right -->
         <div class="navbar-right">
-            <form id="loginform" class="navbar-form hidden" role="form">
-                <div id="loginfields" class="form-group">
-                    <div class="form-group form-group-sm">
-                        <input type="text" placeholder="User or E-Mail" class="form-control input">
-                        <input type="password" placeholder="Password" class="form-control input">
+            {% if not user.is_authenticated %}
+                <!-- login form -->
+                <form id="loginform" class="navbar-form" role="form" method="post" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{% url 'home' %}" />
+                    <div id="loginfields" class="form-group">
+                        <div class="form-group form-group-sm">
+                            {% render_field form.username type="text" placeholder="User or E-Mail" class="form-control input" %}
+                            {% render_field form.password type="password" placeholder="Password" class="form-control input" %}
+                        </div>
                     </div>
-                </div>
-                <div class="btn-group btn-group-sm">
-                    <button id="signin" type="submit" class="btn btn-sm btn-success first-child" name="signin">Sign In</button>
-                    <div id="registerbtns" class="btn-group-sm btn-group-vertical last-child btn-group-2-right">
-                        <button type="submit" class="btn btn-info btn-sm first-child" name="register">Sign Up</button>
-                        <button type="submit" class="btn btn-danger btn-sm last-child" name="forgotpw">Reset PW</button>
+                    <div class="btn-group btn-group-sm">
+                        <button id="signin" type="submit" class="btn btn-sm btn-success first-child" name="signin">Sign In</button>
+                        <div id="registerbtns" class="btn-group-sm btn-group-vertical last-child btn-group-2-right">
+                            <button type="submit" class="btn btn-info btn-sm first-child" name="register">Sign Up</button>
+                            <button type="submit" class="btn btn-danger btn-sm last-child" name="forgotpw">Reset PW</button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+                <!-- /login form -->
+            {% else %}
+                <!-- profile -->
+                <ul id="profile" class="nav navbar-nav">
+                    <li class="dropdown {% navactive request '' %}">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-user"></span>
+                            <span class="caret"></span>
+                        </a>
 
-            <!-- profile -->
-            <ul id="profile" class="nav navbar-nav">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown">
-                        <span class="glyphicon glyphicon-user"></span>
-                        <span class="caret"></span>
-                    </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="dropdown-header username">{{ user.get_username }} ({{ user.get_full_name }})</li>
+                            <li><a href="{# {{ url('content/stats') }} #}">User Settings</a></li>
+                            <li class="divider"></li>
 
-                    <ul class="dropdown-menu" role="menu">
-                        <li class="dropdown-header">c0d3z3r0</li>
-                        <li><a href="{# {{ url('content/stats') }} #}" {# target="#dyncontent" #}>User Settings</a></li>
-                        <li class="divider"></li>
+                            {% if user.is_staff %}
+                                <!-- Admin menu - only visible for admins -->
+                                <li class="dropdown-header">Administration</li>
+                                <li class=""><a href="/admin">Django Admin</a></li>
+                                <li class=""><a href="{# {{ url('content/test') }} #}">General Settings</a></li>
+                                <li class=""><a href="{# {{ url('content/test') }} #}">Users</a></li>
+                                <li class=""><a href="{# {{ url('content/test') }} #}">Challenges</a></li>
+                                <li class=""><a href="{# {{ url('content/test') }} #}">Hints</a></li>
+                                <li class=""><a href="{# {{ url('content/test') }} #}">Ticket Manager</a></li>
+                                <li class="divider"></li>
+                                <!-- / admin menu -->
+                            {% endif %}
 
-                        <!-- Admin menu - only visible for admins -->
-                        <li class="dropdown-header">Administration</li>
-                        <li class=""><a href="{# {{ url('content/test') }} #}" {# target="#dyncontent" #}>General Settings</a></li>
-                        <li class=""><a href="{# {{ url('content/test') }} #}" {# target="#dyncontent" #}>Users</a></li>
-                        <li class=""><a href="{# {{ url('content/test') }} #}" {# target="#dyncontent" #}>Challenges</a></li>
-                        <li class=""><a href="{# {{ url('content/test') }} #}" {# target="#dyncontent" #}>Hints</a></li>
-                        <li class=""><a href="{# {{ url('content/test') }} #}" {# target="#dyncontent" #}>Ticket Manager</a></li>
-                        <li class="divider"></li>
-                        <!-- / admin menu -->
-
-                        <li><a href="{# {{ url('content/test') }} #}" {# target="#dyncontent" #}>Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <!-- /profile -->
-
+                            <li><a href="{% url 'logout' %}?next={% url 'home' %}">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- /profile -->
+            {% endif %}
         </div>
         <!-- /navbar-right -->
 
