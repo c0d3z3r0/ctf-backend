@@ -190,6 +190,11 @@ a:focus{
   font-size: 13px;
 }
 
+#profile > .dropdown > .dropdown-toggle {
+  padding: 10px 10px;
+}
+
+
 
 /* size fix for button groups */
 .btn-group-2 .btn  {
