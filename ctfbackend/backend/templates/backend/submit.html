@@ -4,7 +4,7 @@
     <div class="content content-middle">
         <h2>Submit a flag</h2>
         <p>&nbsp;</p>
-        <form class="form-horizontal">
+        <form class="form-horizontal" method="post">{% csrf_token %}
             <div class="form-group">
                 <label class="col-md-4 control-label" for="flag"></label>
                 <div class="input-group col-md-4">
@@ -15,24 +15,14 @@
                 </div>
             </div>
 
-            <div id="msg_success" class="form-group">
-                <label class="col-md-4 control-label"></label>
-                <div class="alert alert-success col-md-4 shadow">
-                    <span class="glyphicon glyphicon-ok"></span> Success!
+            {% if message %}
+                <div id="msg_{{ message.type }}" class="form-group">
+                    <label class="col-md-4 control-label"></label>
+                    <div class="alert alert-{{ message.type }} col-md-4 shadow">
+                        <span class="glyphicon glyphicon-{{ message.glyph }}"></span> {{ message.text }}
+                    </div>
                 </div>
-            </div>
-            <div id="msg_info" class="form-group hidden">
-                <label class="col-md-4 control-label"></label>
-                <div class="alert alert-info col-md-4 shadow">
-                    <span class="glyphicon glyphicon-repeat"></span> Flag already submitted.
-                </div>
-            </div>
-            <div id="msg_error" class="form-group hidden">
-                <label class="col-md-4 control-label"></label>
-                <div class="alert alert-danger col-md-4 shadow">
-                    <span class="glyphicon glyphicon-remove"></span> Wrong flag submitted!
-                </div>
-            </div>
+            {% endif %}
         </form>
     </div>
 {% endblock dyncontent %}
