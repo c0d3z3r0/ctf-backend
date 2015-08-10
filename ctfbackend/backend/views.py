@@ -3,13 +3,6 @@ from django.views.generic import TemplateView
 # Create your views here.
 
 
-class BaseView(TemplateView):
+class HomeView(TemplateView):
     template_name = 'backend/base.html'
-    context = {
 
-    }
-
-
-class HomeView(BaseView):
-    def get(self, request):
-        return render(request, self.template_name, self.context)
