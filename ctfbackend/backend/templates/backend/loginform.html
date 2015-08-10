@@ -1,0 +1,21 @@
+{% load widget_tweaks %}
+
+<!-- login form -->
+<form id="loginform" class="navbar-form" role="form" method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{% url 'home' %}" />
+    <div id="loginfields" class="form-group">
+        <div class="form-group form-group-sm">
+            {% render_field form.username type="text" placeholder="User or E-Mail" class="form-control input" %}
+            {% render_field form.password type="password" placeholder="Password" class="form-control input" %}
+        </div>
+    </div>
+    <div class="btn-group btn-group-sm">
+        <button id="signin" type="submit" class="btn btn-sm btn-success first-child" name="signin">Sign In</button>
+        <div id="registerbtns" class="btn-group-sm btn-group-vertical last-child btn-group-2-right">
+            <button type="submit" class="btn btn-info btn-sm first-child" name="register">Sign Up</button>
+            <button type="submit" class="btn btn-danger btn-sm last-child" name="forgotpw">Reset PW</button>
+        </div>
+    </div>
+</form>
+<!-- /login form -->

@@ -1,0 +1,33 @@
+{% load backend_extras %}
+
+<!-- profile -->
+<ul id="profile" class="nav navbar-nav">
+    <li class="dropdown {% navactive request '' %}">
+        <a class="dropdown-toggle" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-user"></span>
+            <span class="caret"></span>
+        </a>
+
+        <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header username">{{ user.get_username }} ({{ user.get_full_name }})</li>
+            <li><a href="{# {{ url('content/stats') }} #}">User Settings</a></li>
+            <li class="divider"></li>
+
+            {% if user.is_staff %}
+                <!-- Admin menu - only visible for admins -->
+                <li class="dropdown-header">Administration</li>
+                <li class=""><a href="/admin">Django Admin</a></li>
+                <li class=""><a href="{# {{ url('content/test') }} #}">General Settings</a></li>
+                <li class=""><a href="{# {{ url('content/test') }} #}">Users</a></li>
+                <li class=""><a href="{# {{ url('content/test') }} #}">Challenges</a></li>
+                <li class=""><a href="{# {{ url('content/test') }} #}">Hints</a></li>
+                <li class=""><a href="{# {{ url('content/test') }} #}">Ticket Manager</a></li>
+                <li class="divider"></li>
+                <!-- / admin menu -->
+            {% endif %}
+
+            <li><a href="{% url 'logout' %}?next={% url 'home' %}">Logout</a></li>
+        </ul>
+    </li>
+</ul>
+<!-- /profile -->
