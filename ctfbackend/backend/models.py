@@ -6,14 +6,14 @@ from django.contrib.auth.models import User
 
 
 class Category(TimeStampedModel):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, unique=True)
 
     def __str__(self):
         return self.name
     
 
 class Challenge(TimeStampedModel):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, unique=True)
     description = models.TextField()
     link = models.URLField(blank=True)
     status = models.BooleanField(default=False)
@@ -25,7 +25,7 @@ class Challenge(TimeStampedModel):
 
 
 class Flag(TimeStampedModel):
-    flag = models.CharField(max_length=100)
+    flag = models.CharField(max_length=100, unique=True)
     credits = models.PositiveIntegerField()
 
     challenge = models.ForeignKey(Challenge)
