@@ -1,34 +1,37 @@
 {% load backend_extras %}
 
-<!-- navbar -->
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <!-- container-fluid -->
     <div class="container-fluid">
         <div class="navbar-header">
-            <span class="navbar-brand">{{ global_preferences.general__sitename }}</span>
+            <span class="navbar-brand">
+                {{ global_preferences.general__sitename }}
+            </span>
         </div>
 
-        <!-- menu -->
         <div class="navbar-left">
             <ul class="nav navbar-nav">
-                <li class="{% navactive request 'home' %}"> <a href="{% url 'home' %}">Home</a></li>
+                <li class="{% navactive request 'home' %}">
+                    <a href="{% url 'home' %}">Home</a></li>
 
                 {% if user.is_authenticated %}
-                    <li class="{% navactive request 'submit' %}"> <a href="{% url 'submit' %}">Submit Flag</a></li>
+                    <li class="{% navactive request 'submit' %}">
+                        <a href="{% url 'submit' %}">Submit Flag</a></li>
                 {% endif %}
 
-                <li class="{% navactive request 'scores' %}"> <a href="{% url 'scores' %}">Scoreboard</a></li>
-                <li class="tab-stats"> <a href="{% url 'stats' %}">Statistics</a></li>
+                <li class="tab-stats">
+                    <a href="{% url 'scores' %}">Scoreboard</a></li>
+                <li class="{% navactive request 'stats' %}">
+                    <a href="{% url 'stats' %}">Statistics</a></li>
 
                 {% if user.is_authenticated %}
-                    <li class="{% navactive request 'chals' %}"> <a href="{% url 'chals' %}">Challenges</a></li>
-                    <li class="{% navactive request 'bugtracker' %}"> <a href="{% url 'bugtracker' %}">Bugtracker</a></li>
+                    <li class="{% navactive request 'chals' %}">
+                        <a href="{% url 'chals' %}">Challenges</a></li>
+                    <li class="{% navactive request 'bugtracker' %}">
+                        <a href="{% url 'bugtracker' %}">Bugtracker</a></li>
                 {% endif %}
             </ul>
         </div>
-        <!-- /menu -->
 
-        <!-- navbar-right -->
         <div class="navbar-right">
             {% if not user.is_authenticated %}
                 {% include 'backend/loginform.html' %}
@@ -36,10 +39,5 @@
                 {% include 'backend/profile.html' %}
             {% endif %}
         </div>
-        <!-- /navbar-right -->
-
     </div>
-    <!-- /container-fluid -->
-
 </div>
-<!-- /navbar -->

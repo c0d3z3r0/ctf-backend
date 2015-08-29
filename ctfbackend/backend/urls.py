@@ -5,6 +5,8 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.HomeView.as_view(), name='home'),
+
+    # Chrome favicon fix
     url(r'^favicon.png$', lambda x: HttpResponseRedirect(
-        settings.STATIC_URL + 'backend/favicon.png')),  # chrome favicon fix
+        settings.STATIC_URL + 'backend/favicon.png')),
 ]

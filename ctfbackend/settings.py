@@ -109,7 +109,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    #os.path.join(PROJECT_DIR, 'static/custom'),
     os.path.join(PROJECT_DIR, 'static/bower_components'),
 )
 
