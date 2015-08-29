@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from .models import Flag, Solve, User
+from django.db.models import Sum
 
 # Create your views here.
 
