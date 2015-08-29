@@ -71,3 +71,11 @@ class ScoreboardView(TemplateView):
         context = {'scores': scores}
         context.update(self.chart())
         return render(request, self.template_name, context)
+
+
+class StatisticsView(TemplateView):
+    template_name = 'backend/statistics.html'
+
+
+class ChallengesView(TemplateView):
+    template_name = 'backend/challenges.html'

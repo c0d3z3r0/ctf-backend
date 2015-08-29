@@ -9,4 +9,11 @@ urlpatterns = [
     # Chrome favicon fix
     url(r'^favicon.png$', lambda x: HttpResponseRedirect(
         settings.STATIC_URL + 'backend/favicon.png')),
+
+    # Backend urls
+    url(r'^$', views.HomeView.as_view(), name='home'),
+    url(r'^submit$', views.SubmitView.as_view(), name='submit'),
+    url(r'^scores$', views.ScoreboardView.as_view(), name='scores'),
+    url(r'^chals$', views.ChallengesView.as_view(), name='chals'),
+    url(r'^stats$', views.StatisticsView.as_view(), name='stats'),
 ]
