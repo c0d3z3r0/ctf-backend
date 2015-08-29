@@ -23,27 +23,19 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr class="mark">
-                        <td>1</td>
-                        <td>c0d3z3r0</td>
-                        <td>UNITS</td>
-                        <td>4</td>
-                        <td>6000</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>c0d3z3r0</td>
-                        <td>UNITS</td>
-                        <td>4</td>
-                        <td>6000</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>c0d3z3r0</td>
-                        <td>UNITS</td>
-                        <td>4</td>
-                        <td>6000</td>
-                    </tr>
+                    {% for score in scores %}
+                        <tr {% ifequal user.get_username score.username %}
+                            class="mark"
+                        {% endifequal %}>
+                            <td>
+                                {{ forloop.counter }}
+                            </td>
+                            <td>{{ score.username }}</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>{% firstof score.credits "0" %}</td>
+                        </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
             </div>
