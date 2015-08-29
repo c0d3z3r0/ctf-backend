@@ -8,7 +8,8 @@ body {
 
 
 /* remove dotted line around links */
-a:focus{
+a:focus,
+.btn:focus {
   outline: 0;
 }
 
