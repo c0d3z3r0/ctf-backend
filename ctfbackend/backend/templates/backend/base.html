@@ -16,6 +16,8 @@
     <link href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'c3/c3.min.css' %}" rel="stylesheet">
     <link href="{% static 'backend/custom.css' %}" rel="stylesheet">
+
+    {% block head %}{% endblock head %}
 </head>
 
 <body>
@@ -68,6 +70,9 @@
 <script src="{% static 'html5shiv/dist/html5shiv.min.js' %}"></script>
 <script src="{% static 'respondJs/dest/respond.min.js' %}"></script>
 <![endif]-->
+
+{% block javascript %}{% endblock %}
+
 
 </body>
 </html>
