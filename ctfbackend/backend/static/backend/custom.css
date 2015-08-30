@@ -146,57 +146,39 @@ a:focus,
 }
 
 
-.dropdown-menu {
+#profile .dropdown-menu {
   background-color: #000;
   border: 0;
 }
-.dropdown-menu .divider {
+#profile .dropdown-menu .divider {
   background-color: #9d9d9d;
 }
-.dropdown-menu > li > a {
+#profile .dropdown-menu > li > a {
   color: #9d9d9d;
 }
-.dropdown-menu > li > a:hover,
-.dropdown-menu > li > a:focus {
+#profile .dropdown-menu > li > a:hover,
+#profile .dropdown-menu > li > a:focus {
   color: #000;
   background-color: #ddd;
 }
-.dropdown-menu > .active > a,
-.dropdown-menu > .active > a:hover,
-.dropdown-menu > .active > a:focus {
+#profile .dropdown-menu > .active > a,
+#profile .dropdown-menu > .active > a:hover,
+#profile .dropdown-menu > .active > a:focus {
   color: #fff;
   background-color: #444;
 }
-/* white menu
-.dropdown-menu > li > a:hover,
-.dropdown-menu > li > a:focus {
-  text-decoration: none;
-  text-shadow: 1px 2px 3px black;
-}
-.dropdown-menu > .active > a,
-.dropdown-menu > .active > a:hover,
-.dropdown-menu > .active > a:focus {
-  color: #f6f6f6;
-  background-color: #757575;
-}
-*/
-.dropdown-toggle {
-  pointer-events: none;
-}
-.dropdown-header {
+#profile .dropdown-header {
   color: #ccc;
 }
-.dropdown-header.username {
+#profile .dropdown-header.username {
   color: #eee;
 }
-.dropdown-header.username {
+#profile .dropdown-header.username {
   font-size: 13px;
 }
-
-#profile > .dropdown > .dropdown-toggle {
+#profile .dropdown-toggle {
   padding: 10px 10px;
 }
-
 
 
 /* size fix for button groups */
