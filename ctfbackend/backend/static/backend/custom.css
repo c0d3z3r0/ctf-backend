@@ -1,9 +1,7 @@
 body {
   padding-top: 50px;
   height: 100%;
-
   background-color: #3f3f3f;
-  /*color: #fff;*/
 }
 
 
@@ -32,23 +30,6 @@ a:focus,
   -webkit-opacity: 0.3; /* opacity [0-1] */
   filter:     alpha(opacity = 30);    /* IE 6, 7, 8 */
   -ms-filter: "alpha(opacity = 30)";  /* ab IE 8 zusätzlich möglich */
-}
-
-
-/* NoScript banner */
-#nojs-banner {
-  width: 100% !important;
-  height: 100% !important;
-  position: fixed;
-  z-index: 1130;
-  background-color: #333;
-  border: 10px red solid;
-  margin: 0;
-  padding: 0;
-  top: 0;
-}
-#nojs-banner > .content {
-  padding-top: 20% !important;
 }
 
 
@@ -146,6 +127,9 @@ a:focus,
 }
 
 
+#profile {
+  cursor: pointer;
+}
 #profile .dropdown-menu {
   background-color: #000;
   border: 0;
@@ -172,8 +156,6 @@ a:focus,
 }
 #profile .dropdown-header.username {
   color: #eee;
-}
-#profile .dropdown-header.username {
   font-size: 13px;
 }
 #profile .dropdown-toggle {
@@ -181,6 +163,7 @@ a:focus,
 }
 
 
+/* 3-button-group for registration/login section */
 .btn-group-reg > .btn:first-child:not(:last-child) {
   border-right: 0 !important;
 }
@@ -247,14 +230,14 @@ a:focus,
   border-color: #bd2723;
 }
 
-
+/* alerts shouldn't be so big... */
 .alert {
   padding: 3px;
   margin-bottom: 20px;
   text-align: center;
 }
 
-
+/* shadow for boxes */
 .input-group,
 div.shadow {
   -moz-box-shadow: 1px 1px 10px 3px rgba(0,0,0, 0.3);; /* Firefox */
@@ -262,3 +245,72 @@ div.shadow {
   -khtml-box-shadow:1px 1px 10px 3px rgba(0,0,0, 0.3);; /* Konqueror */
   box-shadow:2px 2px 10px 3px rgba(0,0,0, 0.3);; /* CSS3 */
 }
+
+
+/* outline buttons */
+.btn-outline-primary {
+  border-color: #2e6da4 !important;
+}
+.btn-outline-success {
+  border-color: #4cae4c !important;
+}
+.btn-outline-info {
+  border-color: #46b8da !important;
+}
+.btn-outline-warning {
+  border-color: #eea236 !important;
+}
+.btn-outline-danger {
+  border-color: #d43f3a !important;
+}
+
+
+/* some space between button rows */
+.btn-group-chal > .btn-group > .btn {
+  margin-right: 0.20em;
+}
+.btn-group-chal:not(:last-child) {
+  margin-bottom: 0.5em;
+}
+
+
+/* make panel bigger when used as dropdown */
+.dropdown-menu.panel {
+  padding: 0;
+  min-width: 40em;
+}
+
+/* no margin after last paragraph in panel lists */
+.list-group-item > p:first-of-type {
+  margin-bottom: 5px;
+}
+.list-group-item > p:last-of-type {
+  margin: 0;
+}
+
+
+/* progress bar for challenges */
+.chal-progress {
+  position: relative;
+  width: 40%;
+  float: right;
+}
+.chal-progress > .progress-bar {
+  min-width: 2em;
+}
+
+
+/* traffic light for challenges */
+span.status {
+  border-radius: 100%;
+  display: inline-block;
+  height: 11px;
+  width: 11px;
+  opacity: .15;
+}
+span.status:first-of-type {
+  margin-left: 5px;
+}
+span.status.red    { background-color: red; }
+span.status.green  { background-color: #05aa00; }
+span.status.active { opacity: 1; }
