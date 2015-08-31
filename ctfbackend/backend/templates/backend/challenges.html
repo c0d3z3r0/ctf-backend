@@ -1,0 +1,82 @@
+{% extends 'backend/base.html' %}
+{% load backend_extras %}
+
+{% block dyncontent %}
+    <div class="content">
+
+        <h2>Challenges</h2>
+        <p>&nbsp;</p>
+
+        <div class="col-md-2"></div>
+
+        <div class="col-md-8">
+            {% for category in categories %}
+                <div class="panel panel-default shadow">
+                    <div class="panel-heading"><strong>{{ category.name }}</strong></div>
+                    <div class="panel-body">
+                        {{ category.description }}
+                    </div>
+
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            {% for chals in challenges|catfilter:category|splitlist:10 %}
+                                <div class="btn-group-chal">
+                                    {% for chal in chals %}
+
+                                        <!-- Single button -->
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-default btn{{ chal.progress|isequal:100|yesno:'-,-outline-' }}{{ chal.difficulty|difficulty }} btn-chal dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                {{ chal.credits }} <span class="caret"></span>
+                                            </button>
+                                            <div class="panel panel-{{ chal.difficulty|difficulty }} dropdown-menu shadow">
+                                                <div class="panel-heading">
+                                                    <strong>{{ chal.name }}</strong>
+                                                    <span class="status first-child green {{ chal.active|yesno:'active,' }}"></span>
+                                                    <span class="status red {{ chal.active|yesno:',active' }}"></span>
+                                                    <div class="progress chal-progress">
+                                                        <div class="progress-bar progress-bar-{{ chal.difficulty|difficulty_pgbar }}" role="progressbar" aria-valuenow="{{ chal.progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ chal.progress }}%">
+                                                            <span>{{ chal.progress }}%</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="panel-body">
+                                                    <p>{{ chal.description }}</p>
+                                                </div>
+
+                                                <ul class="list-group">
+                                                    {% for stage in chal.flag_set.all|dictsort:'stage' %}
+                                                        <li class="list-group-item">
+                                                            <div class="row">
+                                                                <div class="col-md-11">
+                                                                    <p><strong>Stage {{ stage.stage }}</strong> ({{ stage.credits }} Credits)</p>
+                                                                    <p>{{ stage.stage_description }}</p>
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                    {% if user in stage.user.all %}
+                                                                        <span class="glyphicon glyphicon-ok"></span>
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+
+                                            </div>
+                                        </div>
+
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
+                        </li>
+                    </ul>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="col-md-2"></div>
+
+
+    </div>
+
+{% endblock dyncontent %}
