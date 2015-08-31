@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from .models import Flag, Solve, User
+from .models import Flag, Solve, User, Challenge, Category
 from django.db.models import Sum
+from django.db.models.functions import Coalesce
+import math
+
 
 # Create your views here.
 
@@ -79,3 +82,23 @@ class StatisticsView(TemplateView):
 
 class ChallengesView(TemplateView):
     template_name = 'backend/challenges.html'
+
+    def get(self, request):
+        categories = Category.objects.filter(
+            challenge__isnull=False,
+            challenge__flag__isnull=False
+        ).distinct().order_by('name')
+
+        challenges = Challenge.objects.filter(flag__isnull=False).annotate(
+            credits=Sum('flag__credits'),
+        ).order_by('credits')
+
+        for c in challenges:
+            c.progress = math.ceil(
+                100 * c.flag_set.filter(user=request.user).count()
+                / c.flag_set.count()
+            )
+
+        context = {'challenges': challenges,
+                   'categories': categories}
+        return render(request, self.template_name, context)
