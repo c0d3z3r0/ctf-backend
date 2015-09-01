@@ -11,4 +11,9 @@ $(document).ready(function(){
             dropdown.addClass('pull-right');
     });
 
+    /* Prevent challenge dropdown close on click to allow copy of text */
+    $('.btn-group-chal .dropdown-menu').on("click", function(e) {
+        e.stopPropagation();
+    });
+
 });
