@@ -16,4 +16,9 @@ $(document).ready(function(){
         e.stopPropagation();
     });
 
+    /* Allow multi-level dropdowns */
+    $('div.dropdown-menu .dropdown-toggle').on('click', function() {
+        $(this).parent().toggleClass('open');
+    });
+
 });

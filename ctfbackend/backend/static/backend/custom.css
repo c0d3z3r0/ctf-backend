@@ -317,3 +317,10 @@ span.status:first-of-type {
 span.status.red    { background-color: red; }
 span.status.green  { background-color: #05aa00; }
 span.status.active { opacity: 1; }
+
+
+/* shadow fix for multilevel dropdowns */
+.btn-group.open .btn-group:not(.open) .dropdown-toggle {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
