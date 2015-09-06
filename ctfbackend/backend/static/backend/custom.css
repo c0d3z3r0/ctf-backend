@@ -324,3 +324,12 @@ span.status.active { opacity: 1; }
   -webkit-box-shadow: none;
   box-shadow: none;
 }
+
+
+/* challenge button size ~10% of line */
+.btn-group-chal > .btn-group {
+  width: 4.57em;
+}
+.btn-group-chal > .btn-group > .btn {
+  width: 100%;
+}
