@@ -14,21 +14,16 @@
                     <a href="{% url 'home' %}">Home</a></li>
 
                 {% if user.is_authenticated %}
+                    <li class="{% navactive request 'chals' %}">
+                        <a href="{% url 'chals' %}">Challenges</a></li>
                     <li class="{% navactive request 'submit' %}">
-                        <a href="{% url 'submit' %}">Submit Flag</a></li>
+                        <a href="{% url 'submit' %}">Submit a Flag</a></li>
                 {% endif %}
 
                 <li class="{% navactive request 'scores' %}">
                     <a href="{% url 'scores' %}">Scoreboard</a></li>
                 <li class="{% navactive request 'stats' %}">
                     <a href="{% url 'stats' %}">Statistics</a></li>
-
-                {% if user.is_authenticated %}
-                    <li class="{% navactive request 'chals' %}">
-                        <a href="{% url 'chals' %}">Challenges</a></li>
-                    <li class="{% navactive request 'bugtracker' %}">
-                        <a href="{% url 'bugtracker' %}">Bugtracker</a></li>
-                {% endif %}
             </ul>
         </div>
 

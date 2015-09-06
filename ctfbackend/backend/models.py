@@ -75,6 +75,9 @@ class BuyHint(TimeStampedModel):
     hint = models.ForeignKey(Hint)
     user = models.ForeignKey(User)
 
+    class Meta:
+        unique_together = (('hint', 'user'),)
+
     def __str__(self):
         return ': '.join([str(self.hint.order), self.user.username])
 

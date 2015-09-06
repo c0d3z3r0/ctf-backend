@@ -75,7 +75,7 @@ class ChallengesView(TemplateView):
 
         if buy_hint:
             hint = Hint.objects.get(pk=buy_hint)
-            BuyHint(hint=hint, user=self.request.user).save()
+            BuyHint.objects.get_or_create(hint=hint, user=request.user)
             context.update({'open_hint': hint})
 
         categories = Category.objects.filter(
