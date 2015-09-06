@@ -15,5 +15,6 @@ urlpatterns = [
     url(r'^submit$', views.SubmitView.as_view(), name='submit'),
     url(r'^scores$', views.ScoreboardView.as_view(), name='scores'),
     url(r'^chals$', views.ChallengesView.as_view(), name='chals'),
+    url(r'^chals/hint/(?P<buy_hint>[0-9]+)/buy', views.ChallengesView.as_view(), name='buy_hint'),
     url(r'^stats$', views.StatisticsView.as_view(), name='stats'),
 ]

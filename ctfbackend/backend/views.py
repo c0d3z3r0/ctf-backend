@@ -70,7 +70,14 @@ class StatisticsView(TemplateView):
 class ChallengesView(TemplateView):
     template_name = 'backend/challenges.html'
 
-    def get(self, request):
+    def get(self, request, buy_hint=None):
+        context = {'open_hint': None}
+
+        if buy_hint:
+            hint = Hint.objects.get(pk=buy_hint)
+            BuyHint(hint=hint, user=self.request.user).save()
+            context.update({'open_hint': hint})
+
         categories = Category.objects.filter(
             challenge__isnull=False,
             challenge__flag__isnull=False
@@ -86,6 +93,6 @@ class ChallengesView(TemplateView):
                 / c.flag_set.count()
             )
 
-        context = {'challenges': challenges,
-                   'categories': categories}
+        context.update({'challenges': challenges,
+                        'categories': categories})
         return render(request, self.template_name, context)
