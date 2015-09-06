@@ -21,7 +21,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for score in scores %}
+                    {% for score in scores|dictsort:'credits' %}
                         <tr {% ifequal user.get_username score.username %}
                             class="mark"
                         {% endifequal %}>

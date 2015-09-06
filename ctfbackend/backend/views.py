@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from .models import Flag, Solve, User, Challenge, Category
+from .models import Flag, Solve, User, Challenge, Category, Hint, BuyHint
 from django.db.models import Sum
 from django.db.models.functions import Coalesce
 import math
@@ -50,9 +50,15 @@ class ScoreboardView(TemplateView):
     template_name = 'backend/scores.html'
 
     def get(self, request):
-        scores = User.objects.annotate(
-            credits=Sum('solve__flag__credits')-Coalesce(Sum('buyhint__hint__price'), 0)
-        ).order_by('credits').reverse()
+        scores = User.objects.all()
+
+        for s in scores:
+            solves = s.solve_set.aggregate(
+                Sum('flag__credits'))['flag__credits__sum'] or 0
+            hints = s.buyhint_set.aggregate(
+                Sum('hint__price'))['hint__price__sum'] or 0
+            s.credits = solves - hints
+
         context = {'scores': scores}
         return render(request, self.template_name, context)
 
