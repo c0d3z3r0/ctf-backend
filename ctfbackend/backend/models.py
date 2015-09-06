@@ -47,15 +47,18 @@ class Flag(TimeStampedModel):
 
 
 class Hint(TimeStampedModel):
-    name = models.CharField(max_length=50)
+    order = models.PositiveIntegerField()
     description = models.TextField()
     price = models.PositiveIntegerField()
 
-    challenge = models.ForeignKey(Challenge)
+    flag = models.ForeignKey(Flag)
     user = models.ManyToManyField(User, through='BuyHint')
 
+    class Meta:
+        unique_together = (('order', 'flag'),)
+
     def __str__(self):
-        return self.name
+        return self.flag.flag + ' - ' + str(self.order)
 
 
 class Solve(TimeStampedModel):
@@ -73,4 +76,5 @@ class BuyHint(TimeStampedModel):
     user = models.ForeignKey(User)
 
     def __str__(self):
-        return ': '.join([self.hint.name, self.user.username])
+        return ': '.join([str(self.hint.order), self.user.username])
+
