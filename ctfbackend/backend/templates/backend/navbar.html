@@ -14,7 +14,7 @@
                     <a href="{% url 'home' %}">Home</a></li>
 
                 {% if user.is_authenticated %}
-                    <li class="{% navactive request 'chals' %}">
+                    <li class="{% navactive request 'chals buy_hint' %}">
                         <a href="{% url 'chals' %}">Challenges</a></li>
                     <li class="{% navactive request 'submit' %}">
                         <a href="{% url 'submit' %}">Submit a Flag</a></li>
