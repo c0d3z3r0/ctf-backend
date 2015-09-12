@@ -81,3 +81,20 @@ class BuyHint(TimeStampedModel):
     def __str__(self):
         return ': '.join([str(self.hint.order), self.user.username])
 
+
+class Profile(TimeStampedModel):
+    user = models.OneToOneField(User, unique=True)
+
+    course = models.ForeignKey(Course)
+    semester = models.PositiveSmallIntegerField()
+
+    class Meta:
+        verbose_name_plural = "Profile"
+
+    def __str__(self):
+        return ''.join(
+            (self.user.username, '|',
+             self.course.faculty.name, '/',
+             self.course.short_name, ':',
+             str(self.semester)
+             ))
