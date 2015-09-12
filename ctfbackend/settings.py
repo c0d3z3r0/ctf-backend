@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'super_inlines',
     'dynamic_preferences',
     'django.contrib.admin',
     'django.contrib.auth',

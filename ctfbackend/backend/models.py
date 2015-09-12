@@ -9,6 +9,9 @@ class Category(TimeStampedModel):
     name = models.CharField(max_length=50, unique=True)
     description = models.TextField()
 
+    class Meta:
+        verbose_name_plural = "Categories"
+
     def __str__(self):
         return self.name
     
@@ -77,6 +80,7 @@ class BuyHint(TimeStampedModel):
 
     class Meta:
         unique_together = (('hint', 'user'),)
+        verbose_name_plural = "Bought Hints"
 
     def __str__(self):
         return ': '.join([str(self.hint.order), self.user.username])
