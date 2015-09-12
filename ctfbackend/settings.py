@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = (
     'super_inlines',
+    'admin_reorder',
     'dynamic_preferences',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -54,6 +55,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'admin_reorder.middleware.ModelAdminReorder',
 )
 
 ROOT_URLCONF = 'ctfbackend.urls'
@@ -124,3 +126,28 @@ DYNAMIC_PREFERENCES = {
     # The python module in which registered preferences will be searched within each app
     'REGISTRY_MODULE': 'dynprefs',
 }
+
+
+ADMIN_REORDER = (
+    {'app': 'auth', 'models': (
+        'auth.User',
+    )},
+
+    {'app': 'dynamic_preferences', 'label': 'Settings', 'models': (
+        {
+            'model': 'dynamic_preferences.GlobalPreferenceModel',
+            'label': 'General Backend Settings'
+        },
+        'backend.Faculty',
+        'backend.Course',
+    )},
+
+    {'app': 'backend', 'label': 'CTF', 'models': (
+        'backend.Category',
+        'backend.Challenge',
+        'backend.Flag',
+        'backend.Hint',
+        'backend.Solve',
+        'backend.BuyHint',
+    )},
+)
