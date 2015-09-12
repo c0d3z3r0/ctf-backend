@@ -86,6 +86,28 @@ class BuyHint(TimeStampedModel):
         return ': '.join([str(self.hint.order), self.user.username])
 
 
+class Faculty(models.Model):
+    name = models.CharField(max_length=30, unique=True)
+
+    class Meta:
+        verbose_name_plural = "Faculties"
+
+    def __str__(self):
+        return self.name
+
+
+class Course(models.Model):
+    short_name = models.CharField(max_length=15, unique=True)
+    long_name = models.CharField(max_length=100, unique=True)
+    faculty = models.ForeignKey(Faculty)
+
+    class Meta:
+        unique_together = [('short_name', 'long_name', 'faculty')]
+
+    def __str__(self):
+        return '/'.join([self.faculty.name, self.short_name])
+
+
 class Profile(TimeStampedModel):
     user = models.OneToOneField(User, unique=True)
 

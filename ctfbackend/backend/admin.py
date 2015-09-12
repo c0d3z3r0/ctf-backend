@@ -62,6 +62,16 @@ class BuyHintAdmin(admin.ModelAdmin):
     pass
 
 
+@admin.register(Faculty)
+class FacultyAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Course)
+class CourseAdmin(admin.ModelAdmin):
+    pass
+
+
 class ProfileInline(admin.StackedInline):
     model = Profile
     min_num = 1
