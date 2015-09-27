@@ -2,11 +2,11 @@
 
 <form id="loginform" class="navbar-form" role="form" method="post" action="{% url 'login' %}">
   {% csrf_token %}
-  <input type="hidden" name="next" value="{% url 'home' %}" />
+  <input type="hidden" name="next" value="{{ next }}" />
   <div id="loginfields" class="form-group">
     <div class="form-group form-group-sm">
-      {% render_field form.username type="text" placeholder="User or E-Mail" class="form-control input" %}
-      {% render_field form.password type="password" placeholder="Password" class="form-control input" %}
+      {% render_field login_form.username type="text" placeholder="Username" class="form-control input" %}
+      {% render_field login_form.password type="password" placeholder="Password" class="form-control input" %}
     </div>
   </div>
   <div class="btn-group btn-group-sm btn-group-reg">

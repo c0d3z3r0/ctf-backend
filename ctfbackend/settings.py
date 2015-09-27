@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'django_extensions',
+    'widget_tweaks',
 
     'ctfbackend.backend',
 )
@@ -73,6 +74,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
 
                 'dynamic_preferences.processors.global_preferences',
+                'ctfbackend.backend.context_processors.include_login_form',
             ],
         },
     },
