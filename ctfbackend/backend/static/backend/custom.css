@@ -44,10 +44,19 @@ a:focus,
 .content > h4,
 .content > h5,
 .content > h6,
-.content > p {
+.content > p.lead {
   text-align: center;
+}
+.content > h1,
+.content > h2,
+.content > h3,
+.content > h4,
+.content > h5,
+.content > h6,
+.content > p {
   color: #fff;
 }
+
 /* middle container */
 .content-middle {
   padding-top: 15%;
