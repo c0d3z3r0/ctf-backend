@@ -61,14 +61,11 @@ a:focus,
 .content-middle {
   padding-top: 15%;
 }
-/* horizontal center a element */
+
 .center {
-  float: none;
-  margin-left: auto;
-  margin-right: auto;
-  /* IE fix */
-  margin-left:27%\9;
+  text-align: center;
 }
+
 .hidden {
   display: none;
 }
