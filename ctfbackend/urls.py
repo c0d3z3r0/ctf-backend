@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 import ctfbackend.backend.urls
 
 urlpatterns = [
+    url(r'^admin/login/$', auth_views.login),
+    url(r'^admin/logout/$', auth_views.logout, {'next_page': '/'}),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include(ctfbackend.backend.urls)),
 ]

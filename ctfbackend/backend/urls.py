@@ -1,10 +1,14 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.http import HttpResponseRedirect
 from django.conf import settings
+from django.contrib.auth import views as auth_views
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.HomeView.as_view(), name='home'),
+    # Authentication
+    url(r'^login/$', auth_views.login, name='login'),
+    url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
+    url('^', include('django.contrib.auth.urls')),
 
     # Chrome favicon fix
     url(r'^favicon.png$', lambda x: HttpResponseRedirect(

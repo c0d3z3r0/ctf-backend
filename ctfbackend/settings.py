@@ -151,3 +151,6 @@ ADMIN_REORDER = (
         'backend.BuyHint',
     )},
 )
+
+
+LOGIN_REDIRECT_URL = '/'
