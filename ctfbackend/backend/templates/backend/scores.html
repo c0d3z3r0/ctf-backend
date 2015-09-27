@@ -1,45 +1,45 @@
 {% extends 'backend/base.html' %}
 
 {% block dyncontent %}
-    <div class="content">
+  <div class="content">
 
-        <h2>Scoreboard</h2>
-        <p>&nbsp;</p>
+    <h2>Scoreboard</h2>
+    <p>&nbsp;</p>
 
-        <div class="col-md-2"></div>
+    <div class="col-md-2"></div>
 
-        <div class="col-md-8">
-            <div class="panel panel-default shadow">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th class="col-md-1">#</th>
-                        <th class="col-md-3">User</th>
-                        <th class="col-md-2">Course</th>
-                        <th class="col-md-2">Semester</th>
-                        <th class="col-md-2">Points</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for score in scores|dictsortreversed:'credits' %}
-                        <tr {% ifequal user.get_username score.username %}
-                            class="mark"
-                        {% endifequal %}>
-                            <td>
-                                {{ forloop.counter }}
-                            </td>
-                            <td>{{ score.username }}</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>{% firstof score.credits "0" %}</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="col-md-2"></div>
-
+    <div class="col-md-8">
+      <div class="panel panel-default shadow">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th class="col-md-1">#</th>
+            <th class="col-md-3">User</th>
+            <th class="col-md-2">Course</th>
+            <th class="col-md-2">Semester</th>
+            <th class="col-md-2">Points</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for score in scores|dictsortreversed:'credits' %}
+            <tr {% ifequal user.get_username score.username %}
+              class="mark"
+            {% endifequal %}>
+              <td>
+                {{ forloop.counter }}
+              </td>
+              <td>{{ score.username }}</td>
+              <td>-</td>
+              <td>-</td>
+              <td>{% firstof score.credits "0" %}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
     </div>
+
+    <div class="col-md-2"></div>
+
+  </div>
 {% endblock dyncontent %}

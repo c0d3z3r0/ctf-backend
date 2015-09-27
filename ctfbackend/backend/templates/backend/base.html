@@ -4,55 +4,55 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{% firstof sitename 'CTF Backend' %}">
-    <meta name="author" content="Michael Niewöhner">
-    <link rel="icon" type="image/png" href="{% static '/favicon.png' %}">
-    <title>{% firstof sitename 'CTF Backend' %}</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{% firstof sitename 'CTF Backend' %}">
+  <meta name="author" content="Michael Niewöhner">
+  <link rel="icon" type="image/png" href="{% static '/favicon.png' %}">
+  <title>{% firstof sitename 'CTF Backend' %}</title>
 
-    <link href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'backend/custom.css' %}" rel="stylesheet">
+  <link href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'backend/custom.css' %}" rel="stylesheet">
 
-    {% block head %}{% endblock head %}
+  {% block head %}{% endblock head %}
 </head>
 
 <body>
-    <div class="container background">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-            <pre>{{ global_preferences.general__background }}</pre>
-        </div>
-        <div class="col-md-3"></div>
+<div class="container background">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <pre>{{ global_preferences.general__background }}</pre>
+  </div>
+  <div class="col-md-3"></div>
+</div>
+
+
+{% include 'backend/navbar.html' %}
+
+
+<div id="dyncontent" class="container">
+  {% block dyncontent %}
+    <div class="content content-middle">
+      <h1>{{ global_preferences.home__title }}</h1>
+      <p class="lead">{{ global_preferences.home__lead | safe }}</p>
     </div>
+  {% endblock dyncontent%}
+</div>
 
 
-    {% include 'backend/navbar.html' %}
+<!-- JavaScript -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
+<script src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'backend/custom.js' %}"></script>
 
-
-    <div id="dyncontent" class="container">
-        {% block dyncontent %}
-            <div class="content content-middle">
-                <h1>{{ global_preferences.home__title }}</h1>
-                <p class="lead">{{ global_preferences.home__lead | safe }}</p>
-            </div>
-        {% endblock dyncontent%}
-    </div>
-
-
-    <!-- JavaScript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
-    <script src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'backend/custom.js' %}"></script>
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
     <script src="{% static 'html5shiv/dist/html5shiv.min.js' %}"></script>
     <script src="{% static 'respondJs/dest/respond.min.js' %}"></script>
     <![endif]-->
 
-    {% block javascript %}{% endblock %}
+{% block javascript %}{% endblock %}
 </body>
 </html>

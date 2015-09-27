@@ -1,38 +1,38 @@
 {% load backend_extras %}
 
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
+  <div class="container-fluid">
+    <div class="navbar-header">
             <span class="navbar-brand">
                 {{ global_preferences.general__sitename }}
             </span>
-        </div>
-
-        <div class="navbar-left">
-            <ul class="nav navbar-nav">
-                <li class="{% navactive request 'home' %}">
-                    <a href="{% url 'home' %}">Home</a></li>
-
-                {% if user.is_authenticated %}
-                    <li class="{% navactive request 'chals buy_hint' %}">
-                        <a href="{% url 'chals' %}">Challenges</a></li>
-                    <li class="{% navactive request 'submit' %}">
-                        <a href="{% url 'submit' %}">Submit a Flag</a></li>
-                {% endif %}
-
-                <li class="{% navactive request 'scores' %}">
-                    <a href="{% url 'scores' %}">Scoreboard</a></li>
-                <li class="{% navactive request 'stats' %}">
-                    <a href="{% url 'stats' %}">Statistics</a></li>
-            </ul>
-        </div>
-
-        <div class="navbar-right">
-            {% if not user.is_authenticated %}
-                {% include 'backend/loginform.html' %}
-            {% else %}
-                {% include 'backend/profile.html' %}
-            {% endif %}
-        </div>
     </div>
+
+    <div class="navbar-left">
+      <ul class="nav navbar-nav">
+        <li class="{% navactive request 'home' %}">
+          <a href="{% url 'home' %}">Home</a></li>
+
+        {% if user.is_authenticated %}
+          <li class="{% navactive request 'chals buy_hint' %}">
+            <a href="{% url 'chals' %}">Challenges</a></li>
+          <li class="{% navactive request 'submit' %}">
+            <a href="{% url 'submit' %}">Submit a Flag</a></li>
+        {% endif %}
+
+        <li class="{% navactive request 'scores' %}">
+          <a href="{% url 'scores' %}">Scoreboard</a></li>
+        <li class="{% navactive request 'stats' %}">
+          <a href="{% url 'stats' %}">Statistics</a></li>
+      </ul>
+    </div>
+
+    <div class="navbar-right">
+      {% if not user.is_authenticated %}
+        {% include 'backend/loginform.html' %}
+      {% else %}
+        {% include 'backend/profile.html' %}
+      {% endif %}
+    </div>
+  </div>
 </div>
