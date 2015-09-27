@@ -1,0 +1,58 @@
+{% extends 'backend/base.html' %}
+{% load widget_tweaks %}
+
+{% block middyncontent %}
+  <div class="content">
+    <div class="col-md-4"></div>
+
+    <div class="col-md-4">
+      {% if form.errors and not form.non_field_errors %}
+        <div class="alert alert-danger" role="alert">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          {% if form.errors.items|length == 1 %}Please correct the error below.{% else %}Please correct the errors below.{% endif %}
+        </div>
+        <br>
+      {% endif %}
+
+      {% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}
+          <div class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            {{ error }}
+          </div>
+        {% endfor %}
+        <br>
+      {% endif %}
+
+      <form id="loginform" role="form" method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}" />
+        <div class="form-group">
+          {% if form.username.errors %}
+            <div class="alert alert-danger" role="alert">
+              {{ form.username.errors|striptags }}
+            </div>
+          {% endif %}
+          {% render_field form.username type="text" placeholder="Username" class="form-control input" %}
+        </div>
+
+        <div class="form-group">
+          {% if form.password.errors %}
+            <div class="alert alert-danger" role="alert">
+              {{ form.password.errors|striptags }}
+            </div>
+          {% endif %}
+          {% render_field form.password type="password" placeholder="Password" class="form-control input" %}
+        </div>
+
+        <button id="signin" type="submit" class="btn btn-sm btn-success" name="submit">Sign In</button>
+        <div class="btn-group btn-group-sm pull-right">
+          <a href="#" class="btn btn-default">Sign Up</a>
+          <a href="#" class="btn btn-default">Reset PW</a>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-md-4"></div>
+  </div>
+{% endblock middyncontent%}

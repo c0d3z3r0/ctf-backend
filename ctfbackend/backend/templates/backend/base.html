@@ -34,8 +34,10 @@
 <div id="dyncontent" class="container">
   {% block dyncontent %}
     <div class="content content-middle">
-      <h1>{{ global_preferences.home__title }}</h1>
-      <p class="lead">{{ global_preferences.home__lead | safe }}</p>
+      {% block middyncontent %}
+        <h1>{{ global_preferences.home__title }}</h1>
+        <p class="lead">{{ global_preferences.home__lead | safe }}</p>
+      {% endblock middyncontent %}
     </div>
   {% endblock dyncontent%}
 </div>
