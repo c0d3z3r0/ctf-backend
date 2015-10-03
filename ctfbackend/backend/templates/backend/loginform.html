@@ -1,6 +1,6 @@
 {% load widget_tweaks %}
 
-<form id="loginform" class="navbar-form" role="form" method="post" action="{% url 'login' %}">
+<form id="loginform" class="navbar-form" role="form" method="post" action="{% url 'auth_login' %}">
   {% csrf_token %}
   <input type="hidden" name="next" value="{{ next }}" />
   <div id="loginfields" class="form-group">

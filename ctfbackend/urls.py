@@ -19,8 +19,13 @@ from django.contrib.auth import views as auth_views
 import ctfbackend.backend.urls
 
 urlpatterns = [
+    # Authentication
+    ## Override admin login site
     url(r'^admin/login/$', auth_views.login),
+    ## Set next_page for logout
     url(r'^admin/logout/$', auth_views.logout, {'next_page': '/'}),
+
     url(r'^admin/', include(admin.site.urls)),
+
     url(r'^', include(ctfbackend.backend.urls)),
 ]

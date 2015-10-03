@@ -24,7 +24,7 @@
         <br>
       {% endif %}
 
-      <form id="loginform" role="form" method="post" action="{% url 'login' %}">
+      <form id="loginform" role="form" method="post" action="{% url 'auth_login' %}">
         {% csrf_token %}
         <input type="hidden" name="next" value="{{ next }}" />
         <div class="form-group">

@@ -6,9 +6,14 @@ from . import views
 
 urlpatterns = [
     # Authentication
-    url(r'^login/$', auth_views.login, name='login'),
-    url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
-    url('^', include('django.contrib.auth.urls')),
+    ## Override logout next_page
+    url(r'^accounts/logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
+    ## Override use of uidb36 in django-registration
+    url(r'^password/reset/confirm/(?P<uidb64>[0-9A-Za-z_\-]+)/'
+        r'(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+        auth_views.password_reset_confirm,
+        name='auth_password_reset_confirm'),
+    url(r'^accounts/', include('registration.backends.hmac.urls')),
 
     # Chrome favicon fix
     url(r'^favicon.png$', lambda x: HttpResponseRedirect(
