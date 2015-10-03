@@ -29,9 +29,9 @@
 
     <div class="navbar-right">
       {% if not user.is_authenticated %}
-        {% ifnotequal request.resolver_match.url_name 'auth_login'%}
+        {% if request.resolver_match.url_name not in 'auth_login auth_admin_login' %}
           {% include 'backend/loginform.html' %}
-        {% endifnotequal %}
+        {% endif %}
       {% else %}
         {% include 'backend/profile.html' %}
       {% endif %}

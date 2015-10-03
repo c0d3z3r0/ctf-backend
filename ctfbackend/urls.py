@@ -21,7 +21,7 @@ import ctfbackend.backend.urls
 urlpatterns = [
     # Authentication
     ## Override admin login site
-    url(r'^admin/login/$', auth_views.login),
+    url(r'^admin/login/$', auth_views.login, name='auth_admin_login'),
     ## Set next_page for logout
     url(r'^admin/logout/$', auth_views.logout, {'next_page': '/'}),
 
