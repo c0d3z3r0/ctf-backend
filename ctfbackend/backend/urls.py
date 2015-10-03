@@ -7,12 +7,7 @@ from . import views
 urlpatterns = [
     # Authentication
     ## Override logout next_page
-    url(r'^accounts/logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
-    ## Override use of uidb36 in django-registration
-    url(r'^password/reset/confirm/(?P<uidb64>[0-9A-Za-z_\-]+)/'
-        r'(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
-        auth_views.password_reset_confirm,
-        name='auth_password_reset_confirm'),
+    url(r'^accounts/logout/$', auth_views.logout, {'next_page': '/'}, name='auth_logout'),
     url(r'^accounts/', include('registration.backends.hmac.urls')),
 
     # Chrome favicon fix
