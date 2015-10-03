@@ -1,0 +1,40 @@
+{% extends 'backend/base.html' %}
+{% load widget_tweaks %}
+
+{% block dyncontent %}
+  <div class="content">
+    <h2>{% block form_title %}{% endblock %}</h2>
+    <p>&nbsp;</p>
+
+    <div class="col-md-4"></div>
+
+    <div class="col-md-4">
+      {% if form.errors and not form.non_field_errors %}
+        <div class="alert alert-danger" role="alert">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          {% if form.errors.items|length == 1 %}Please correct the error below.{% else %}Please correct the errors below.{% endif %}
+        </div>
+        <br>
+      {% endif %}
+
+      {% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}
+          <div class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            {{ error }}
+          </div>
+        {% endfor %}
+        <br>
+      {% endif %}
+
+      <form role="form" method="post" action="">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}" />
+
+        {% block form_content %}{% endblock %}
+      </form>
+    </div>
+
+    <div class="col-md-4"></div>
+  </div>
+{% endblock dyncontent%}

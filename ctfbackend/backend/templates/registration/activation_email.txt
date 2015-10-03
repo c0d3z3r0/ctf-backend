@@ -1,0 +1,6 @@
+{% load backend_extras %}
+{% autoescape off %}
+Thanks for registering at {% dynprefs 'general__sitename' %}.
+Your activation link will expire in {{ expiration_days }} day(s).
+http://{{ site.domain }}{% url 'registration_activate' activation_key=activation_key %}
+{% endautoescape %}

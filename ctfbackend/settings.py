@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'ctfbackend.backend',
     'super_inlines',
     'admin_reorder',
     'dynamic_preferences',
@@ -43,8 +44,6 @@ INSTALLED_APPS = (
 
     'django_extensions',
     'widget_tweaks',
-
-    'ctfbackend.backend',
 )
 
 MIDDLEWARE_CLASSES = (

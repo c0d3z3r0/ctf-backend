@@ -1,4 +1,5 @@
 from django import template
+from dynamic_preferences import global_preferences_registry
 
 register = template.Library()
 
@@ -8,6 +9,12 @@ def navactive(request, urls):
     if request.resolver_match.url_name in urls.split():
         return "active"
     return ""
+
+
+@register.simple_tag
+def dynprefs(prefname):
+    prefs = global_preferences_registry.manager()
+    return prefs[prefname]
 
 
 @register.filter
