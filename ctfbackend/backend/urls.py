@@ -10,10 +10,6 @@ urlpatterns = [
     url(r'^accounts/logout/$', auth_views.logout, {'next_page': '/'}, name='auth_logout'),
     url(r'^accounts/', include('registration.backends.hmac.urls')),
 
-    # Chrome favicon fix
-    url(r'^favicon.png$', lambda x: HttpResponseRedirect(
-        settings.STATIC_URL + 'backend/favicon.png')),
-
     # Backend urls
     url(r'^$', views.HomeView.as_view(), name='home'),
     url(r'^submit$', views.SubmitView.as_view(), name='submit'),
