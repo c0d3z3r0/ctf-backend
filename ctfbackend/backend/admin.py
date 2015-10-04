@@ -5,11 +5,14 @@ from django.contrib.auth.models import User
 from super_inlines.admin import SuperInlineModelAdmin, SuperModelAdmin
 from .models import Category, Challenge, Flag, Hint, Solve, BuyHint, Profile, Faculty, Course
 from dynamic_preferences import global_preferences_registry as dynprefs
+from django.db.utils import OperationalError
 # Register your models here.
 
-
-prefs = dynprefs.manager()
-admin.site.site_header = prefs['general__sitename'] + ' - Administration'
+try:
+    prefs = dynprefs.manager()
+    admin.site.site_header = prefs['general__sitename'] + ' - Administration'
+except OperationalError:
+    pass
 
 
 class HintInline(SuperInlineModelAdmin, TabularInline):
