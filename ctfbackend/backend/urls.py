@@ -29,7 +29,7 @@ urlpatterns = [
     url(r'^chals/hint/(?P<buy_hint>[0-9]+)/buy',
         login_required(views.ChallengesView.as_view()),
         name='buy_hint'),
-    url(r'^stats$',
-        views.StatisticsView.as_view(),
-        name='stats'),
+    #url(r'^stats$',
+    #    views.StatisticsView.as_view(),
+    #    name='stats'),
 ]

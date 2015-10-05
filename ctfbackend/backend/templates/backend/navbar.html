@@ -22,8 +22,10 @@
 
         <li class="{% navactive request 'scores' %}">
           <a href="{% url 'scores' %}">Scoreboard</a></li>
+        {% comment %}
         <li class="{% navactive request 'stats' %}">
           <a href="{% url 'stats' %}">Statistics</a></li>
+        {% endcomment %}
       </ul>
     </div>
 

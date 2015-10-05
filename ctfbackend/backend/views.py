@@ -2,9 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from .models import Flag, Solve, User, Challenge, Category, Hint, BuyHint
 from django.db.models import Sum
-from django.db.models.functions import Coalesce
 import math
-
 
 # Create your views here.
 
@@ -63,8 +61,8 @@ class ScoreboardView(TemplateView):
         return render(request, self.template_name, context)
 
 
-class StatisticsView(TemplateView):
-    template_name = 'backend/statistics.html'
+#class StatisticsView(TemplateView):
+#    template_name = 'backend/statistics.html'
 
 
 class ChallengesView(TemplateView):
