@@ -62,6 +62,10 @@ cd /srv/ctf-backend
 git pull
 ~~~
 
+## Warning
+
+You should ***NOT*** make any changes to the cloned git repo if you do not know how to deal with git merges!
+
 ## License
 
 Copyright (C) 2015 Michael Niewöhner
