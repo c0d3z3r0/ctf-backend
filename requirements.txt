@@ -1,4 +1,4 @@
-Django==1.8.4
+Django==1.8.5
 django-dynamic-preferences==0.5.4
 django-extensions==1.5.7
 django-modeladmin-reorder==0.1.2
