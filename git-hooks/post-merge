@@ -1,7 +1,11 @@
 #!/bin/bash
 
-BASE_DIR="$(cd "$(dirname "$0")/../../" && pwd -P)"  # works on mac, too
-cd $BASE_DIR
+if [[ -z "$GIT_DIR" ]]; then
+  GIT_DIR="$(cd "$(dirname "$0")/../.git" && pwd -P)"  # works on mac, too
+fi
+
+cd "$GIT_DIR/.."
+
 
 systemctl stop uwsgi nginx
 
@@ -9,10 +13,11 @@ systemctl stop uwsgi nginx
 
 . ./venv/bin/activate
 pip3 install -r requirements.txt
+mkdir static
 ./manage.py collectstatic --clear --noinput --link
 ./manage.py migrate
 deactivate
 
-chown -R www-data. $BASE_DIR
+chown -R www-data. .
 
 systemctl start uwsgi nginx

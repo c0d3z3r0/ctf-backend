@@ -1,7 +1,11 @@
 #!/bin/bash
 
-BASE_DIR="$(cd "$(dirname "$0")/../../" && pwd -P)"  # works on mac, too
-cd $BASE_DIR 
+if [[ -z "$GIT_DIR" ]]; then
+  GIT_DIR="$(cd "$(dirname "$0")/../.git" && pwd -P)"  # works on mac, too
+fi
+
+cd "$GIT_DIR/.."
+
 
 if [ "$(git symbolic-ref HEAD)" == "refs/heads/stable" ]; then
   ./manage.py makemigrations
