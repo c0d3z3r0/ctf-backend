@@ -1,3 +1,4 @@
 {
-  "directory": "ctfbackend/static/bower_components"
+  "directory": "ctfbackend/static/bower_components",
+  "analytics": false
 }

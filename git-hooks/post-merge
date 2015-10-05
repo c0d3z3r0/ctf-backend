@@ -1,0 +1,18 @@
+#!/bin/bash
+
+BASE_DIR="$(cd "$(dirname "$0")/../../" && pwd -P)"  # works on mac, too
+cd $BASE_DIR
+
+systemctl stop uwsgi nginx
+
+./node_modules/.bin/bower --allow-root --config.interactive=false install
+
+. ./venv/bin/activate
+pip3 install -r requirements.txt
+./manage.py collectstatic --clear --noinput --link
+./manage.py migrate
+deactivate
+
+chown -R www-data. $BASE_DIR
+
+systemctl start uwsgi nginx

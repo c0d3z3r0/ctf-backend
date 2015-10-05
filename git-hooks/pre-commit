@@ -1,0 +1,16 @@
+#!/bin/bash
+
+BASE_DIR="$(cd "$(dirname "$0")/../../" && pwd -P)"  # works on mac, too
+cd $BASE_DIR 
+
+if [ "$(git symbolic-ref HEAD)" == "refs/heads/stable" ]; then
+  ./manage.py makemigrations
+	mig=$(find -E . -regex ./ctfbackend/.*migrations/[0-9]+.*\.py)
+	if ! git ls-files --stage --error-unmatch $mig >/dev/null 2>/dev/null;
+	then
+    echo
+    echo "Don't forget to add the migration files!"
+    echo "Ignore with -n / --no-verify."
+    exit 1
+    fi
+fi

@@ -12,20 +12,38 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from django.utils.crypto import get_random_string
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PROJECT_DIR = (os.path.dirname(os.path.abspath(__file__)))
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'g(tzcnx%1bt_cawaec31&4z9%-_aj$1zp629@go^mpprvag#7l'
+try:
+    from .secret_key import *
+except ImportError:
+    chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
+    f = open(os.path.join(PROJECT_DIR, 'secret_key.py'), 'w')
+    f.write('SECRET_KEY = \'%s\'' % get_random_string(50, chars))
+    f.close()
+    from .secret_key import *
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+if not DEBUG:
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_HTTPONLY = True
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_SSL_REDIRECT = True
+    X_FRAME_OPTIONS = 'DENY'
+
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -116,6 +134,8 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_DIR, 'static/bower_components'),
 )
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 
 # Django dynamic preferences
 DYNAMIC_PREFERENCES = {
@@ -159,3 +179,6 @@ LOGIN_REDIRECT_URL = '/'
 
 # Registration
 ACCOUNT_ACTIVATION_DAYS = 1
+
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
