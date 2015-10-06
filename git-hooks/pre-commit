@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 if [[ -z "$GIT_DIR" ]]; then
   GIT_DIR="$(cd "$(dirname "$0")/../.git" && pwd -P)"  # works on mac, too
@@ -7,16 +7,37 @@ fi
 cd "$GIT_DIR/.."
 
 
-if [ "$(git symbolic-ref HEAD)" == "refs/heads/stable" ]; then
-  [ -e venv ] && . venv/bin/activate
-  ./manage.py makemigrations
-	[ -e venv ] && deactivate
-	mig=$(find -E . -regex ./ctfbackend/.*migrations/[0-9]+.*\.py)
-	if ! git ls-files --stage --error-unmatch $mig >/dev/null 2>/dev/null;
-	then
-    echo
-    echo "Don't forget to add the migration files!"
-    echo "Ignore with -n / --no-verify."
-    exit 1
+if [ "$(git symbolic-ref HEAD)" == "refs/heads/master" ]; then
+  # Switch to virtual env
+  ! [ -e venv ] && echo "Virtual env missing. Abort." && exit 1
+  . venv/bin/activate
+
+  # Deploy check
+  if [ "$NODEP" != "1" ]; then
+    if ./manage.py check --deploy 2>&1 | grep -qE '[1-9]+ issues'; then
+      echo WARNING!
+      echo There were deploy check errors.
+      echo Check with ./manage.py check --deploy.
+      echo You may want to correct them or ignore them setting NODEP=1.
+      exit 1
     fi
+  fi
+
+  # Make migrations and check if all are added to stage
+  if [ "$NOMIG" != "1" ]; then
+    ./manage.py makemigrations >/dev/null 2>/dev/null
+  	mig=$(find -E . -regex ./ctfbackend/.*migrations/[0-9]+.*\.py)
+  	if ! git ls-files --stage --error-unmatch $mig >/dev/null 2>/dev/null;
+  	then
+      echo WARNING!
+      echo "Don't forget to add the migration files!"
+      echo "Set NOMIG=1 to ignore."
+      exit 1
+    fi
+  fi
+
+  # deactivate virtual env
+  deactivate
+
+  echo All checks succeeded.
 fi
