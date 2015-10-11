@@ -15,9 +15,9 @@
           <tr>
             <th class="col-md-1">#</th>
             <th class="col-md-3">User</th>
-            <th class="col-md-2">Course</th>
-            <th class="col-md-2">Semester</th>
-            <th class="col-md-2">Points</th>
+            <th class="col-md-1">Course</th>
+            <th class="col-md-1 text-center">Semester</th>
+            <th class="col-md-2 text-right">Points</th>
           </tr>
           </thead>
           <tbody>
@@ -29,9 +29,9 @@
                 {{ forloop.counter }}
               </td>
               <td>{{ score.username }}</td>
-              <td>-</td>
-              <td>-</td>
-              <td>{% firstof score.credits "0" %}</td>
+              <td>{{ score.profile.course }}</td>
+              <td class="text-center">{{ score.profile.semester }}</td>
+              <td class="text-right">{% firstof score.credits "0" %}</td>
             </tr>
           {% endfor %}
           </tbody>
