@@ -7,7 +7,7 @@ fi
 cd "$GIT_DIR/.."
 
 
-if [ "$(git symbolic-ref HEAD)" == "refs/heads/stable" ]; then
+if [ "$(git symbolic-ref HEAD)" == "refs/heads/master" ]; then
   # Switch to virtual env
   ! [ -e venv ] && echo "Virtual env missing. Abort." && exit 1
   . venv/bin/activate
