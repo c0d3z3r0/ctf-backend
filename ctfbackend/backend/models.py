@@ -1,6 +1,7 @@
 from django.db import models
 from django_extensions.db.models import TimeStampedModel
 from django.contrib.auth.models import User
+from registration.signals import user_registered
 
 # Create your models here.
 
@@ -124,3 +125,13 @@ class Profile(TimeStampedModel):
              self.course.short_name, ':',
              str(self.semester)
              ))
+
+    @staticmethod
+    def user_registered_callback(sender, user, request, **kwargs):
+        profile = Profile(user=user)
+        profile.course = Course.objects.get(pk=request.POST["profile-course"])
+        profile.semester = request.POST["profile-semester"]
+        profile.save()
+
+
+user_registered.connect(Profile.user_registered_callback)

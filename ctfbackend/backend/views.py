@@ -3,6 +3,9 @@ from django.views.generic import TemplateView
 from .models import Flag, Solve, User, Challenge, Category, Hint, BuyHint
 from django.db.models import Sum
 import math
+from .forms import RegistrationForm
+from registration.backends.hmac.views import \
+    RegistrationView as BaseRegistrationView
 
 # Create your views here.
 
@@ -94,3 +97,9 @@ class ChallengesView(TemplateView):
         context.update({'challenges': challenges,
                         'categories': categories})
         return render(request, self.template_name, context)
+
+
+# TODO: just extend User class instead of betterforms?
+# Override registration view form
+class RegistrationView(BaseRegistrationView):
+    form_class = RegistrationForm

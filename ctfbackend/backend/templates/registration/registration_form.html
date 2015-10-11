@@ -5,40 +5,57 @@
 
 {% block form_content %}
   <div class="form-group">
-    {% if form.username.errors %}
+    {% if form.user.username.errors %}
       <div class="alert alert-danger" role="alert">
-        {{ form.username.errors|striptags }}
+        {{ form.user.username.errors|striptags }}
       </div>
     {% endif %}
-    {% render_field form.username placeholder="Username" class="form-control input" %}
+    {% render_field form.user.username placeholder="Username" class="form-control input" %}
   </div>
 
   <div class="form-group">
-    {% if form.email.errors %}
+    {% if form.user.email.errors %}
       <div class="alert alert-danger" role="alert">
-        {{ form.email.errors|striptags }}
+        {{ form.user.email.errors|striptags }}
       </div>
     {% endif %}
-    {% render_field form.email placeholder="E-Mail" class="form-control input" %}
+    {% render_field form.user.email placeholder="E-Mail" class="form-control input" %}
   </div>
 
   <div class="form-group">
-    {% if form.password1.errors %}
+    {% if form.user.password1.errors %}
       <div class="alert alert-danger" role="alert">
-        {{ form.password1.errors|striptags }}
+        {{ form.user.password1.errors|striptags }}
       </div>
     {% endif %}
-    {% render_field form.password1 placeholder="Password" class="form-control input" %}
+    {% render_field form.user.password1 placeholder="Password" class="form-control input" %}
   </div>
 
   <div class="form-group">
-    {% if form.password2.errors %}
+    {% if form.user.password2.errors %}
       <div class="alert alert-danger" role="alert">
-        {{ form.password2.errors|striptags }}
+        {{ form.user.password2.errors|striptags }}
       </div>
     {% endif %}
-    {% render_field form.password2 placeholder="Repeat password" class="form-control input" %}
+    {% render_field form.user.password2 placeholder="Repeat password" class="form-control input" %}
   </div>
 
+  <div class="form-group">
+    {% if form.profile.course.errors %}
+      <div class="alert alert-danger" role="alert">
+        {{ form.profile.course.errors|striptags }}
+      </div>
+    {% endif %}
+    {% render_field form.profile.course placeholder="Course" class="form-control input" %}
+  </div>
+
+  <div class="form-group">
+    {% if form.profile.semester.errors %}
+      <div class="alert alert-danger" role="alert">
+        {{ form.profile.semester.errors|striptags }}
+      </div>
+    {% endif %}
+    {% render_field form.profile.semester placeholder="Semester" class="form-control input" %}
+  </div>
   <button type="submit" class="btn btn-sm btn-warning" name="submit">Register</button>
 {% endblock %}

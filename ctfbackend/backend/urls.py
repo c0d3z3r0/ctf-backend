@@ -1,10 +1,15 @@
 from django.conf.urls import url, include
 from django.contrib.auth import views as auth_views
-from . import views
+from .views import \
+    RegistrationView, HomeView, SubmitView, ScoreboardView, ChallengesView
 from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     # Authentication
+    ## Override registration form
+    url(r'^accounts/register/$',
+        RegistrationView.as_view(),
+        name='registration_register'),
     ## Override logout next_page
     url(r'^accounts/logout/$',
         auth_views.logout,
@@ -15,21 +20,21 @@ urlpatterns = [
 
     # Backend urls
     url(r'^$',
-        views.HomeView.as_view(),
+        HomeView.as_view(),
         name='home'),
     url(r'^submit$',
-        login_required(views.SubmitView.as_view()),
+        login_required(SubmitView.as_view()),
         name='submit'),
     url(r'^scores$',
-        views.ScoreboardView.as_view(),
+        ScoreboardView.as_view(),
         name='scores'),
     url(r'^chals$',
-        login_required(views.ChallengesView.as_view()),
+        login_required(ChallengesView.as_view()),
         name='chals'),
     url(r'^chals/hint/(?P<buy_hint>[0-9]+)/buy',
-        login_required(views.ChallengesView.as_view()),
+        login_required(ChallengesView.as_view()),
         name='buy_hint'),
     #url(r'^stats$',
-    #    views.StatisticsView.as_view(),
+    #    StatisticsView.as_view(),
     #    name='stats'),
 ]

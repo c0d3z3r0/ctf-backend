@@ -425,3 +425,11 @@ class HomeLead(LongStringPreference):
     default = '... the Capture the Flag Workshop of the<br>University of ' \
               'Applied Sciences in Offenburg.'
     help_text = 'Home site lead text (Default: '+default+')'
+
+@global_preferences_registry.register
+class GoodDomains(LongStringPreference):
+    section = 'registration'
+    name = 'allowed_domains'
+    verbose_name = 'Allowed Domains'
+    default = ''
+    help_text = 'Comma-separated list of allowed mail domains for registration'
