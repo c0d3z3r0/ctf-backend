@@ -2,11 +2,6 @@
 
 This is the new backend for the CTF course / project at HS Offenburg.
 
-    ****************************************************
-    * THIS PROJECT IS UNDER HEAVY DEVELOPMENT AND      *
-    * CURRENTLY NOT IN A STABLE STATE!                 *
-    * DO NOT USE IT IN A PRODUCTIVE ENVIRONMENT!       *
-    ****************************************************
 
 ## Deployment
 
