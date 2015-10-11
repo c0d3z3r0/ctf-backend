@@ -13,3 +13,4 @@
 /static
 /venv
 /ctfbackend/secret_key.py
+node_modules
