@@ -8,6 +8,8 @@ This is the new backend for the CTF course / project at HS Offenburg.
 ### Install dependencies
 
 ~~~sh
+aptitude update
+aptitude upgrade
 aptitude install python3-pip nginx openssl ssl-cert uwsgi uwsgi-plugin-python3 nodejs-legacy npm
 pip3 install virtualenv
 ~~~
