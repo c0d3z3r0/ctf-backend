@@ -88,7 +88,8 @@ class BuyHint(TimeStampedModel):
 
 
 class Faculty(models.Model):
-    name = models.CharField(max_length=30, unique=True)
+    name = models.CharField(max_length=100, unique=True)
+    short_name = models.CharField(max_length=15, unique=True)
 
     class Meta:
         verbose_name_plural = "Faculties"
@@ -106,7 +107,7 @@ class Course(models.Model):
         unique_together = [('short_name', 'long_name', 'faculty')]
 
     def __str__(self):
-        return '/'.join([self.faculty.name, self.short_name])
+        return '/'.join([self.faculty.short_name, self.short_name])
 
 
 class Profile(TimeStampedModel):
