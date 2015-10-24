@@ -13,7 +13,7 @@ systemctl stop uwsgi nginx
 
 . ./venv/bin/activate
 pip3 install -r requirements.txt
-mkdir static
+mkdir -p static
 ./manage.py collectstatic --clear --noinput --link
 ./manage.py migrate
 deactivate
