@@ -40,7 +40,8 @@ class UserForm(BaseRegistrationForm):
 
         # Check for good domain
         email_domain = self.cleaned_data['email'].split('@')[1]
-        if self.allowed_domains and email_domain not in self.allowed_domains:
+        if len(self.allowed_domains) > 1 and \
+                email_domain not in self.allowed_domains:
             raise forms.ValidationError(self.BAD_DOMAIN)
 
         return self.cleaned_data['email']
