@@ -25,7 +25,7 @@ if [ "$(git symbolic-ref HEAD)" == "refs/heads/master" ]; then
 
   # Make migrations and check if all are added to stage
   if [ "$NOMIG" != "1" ]; then
-    ./manage.py makemigrations >/dev/null 2>/dev/null
+    ./manage.py makemigrations
   	mig=$(find -E . -regex ./ctfbackend/.*migrations/[0-9]+.*\.py)
   	if ! git ls-files --stage --error-unmatch $mig >/dev/null 2>/dev/null;
   	then
