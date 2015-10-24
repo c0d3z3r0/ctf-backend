@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from .models import Flag, Solve, User, Challenge, Category, Hint, BuyHint
 from django.db.models import Sum
+from django.contrib.auth import get_user_model
 import math
 from .forms import RegistrationForm
 from registration.backends.hmac.views import \
@@ -103,3 +104,12 @@ class ChallengesView(TemplateView):
 # Override registration view form
 class RegistrationView(BaseRegistrationView):
     form_class = RegistrationForm
+
+    # Override registration/RegistrationView
+    def get_user_kwargs(self, **cleaned_data):
+        User = get_user_model()
+        return {
+            User.USERNAME_FIELD: cleaned_data['user']['username'],
+            'email': cleaned_data['user']['email'],
+            'password': cleaned_data['user']['password1'],
+        }
