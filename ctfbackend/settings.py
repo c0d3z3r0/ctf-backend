@@ -180,5 +180,9 @@ LOGIN_REDIRECT_URL = '/'
 # Registration
 ACCOUNT_ACTIVATION_DAYS = 1
 
+
+# Mail
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_BACKEND = 'ctfbackend.backend.mail.EmailBackend'

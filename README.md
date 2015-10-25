@@ -50,6 +50,10 @@ This is the first user - you. If you need more admins, just tick `Superuser` for
 deactivate
 ~~~
 
+### E-Mail Settings
+
+Do not set the mail settings in `settings.py`. Instead go to the admin interface to `Settings > General Backend Settings`.
+
 ## Updating
 
 Since we use a git-hook you just need to do a `git pull` inside the base directory. When there are no errors, that's all you have to do :-)

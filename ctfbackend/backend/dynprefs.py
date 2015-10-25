@@ -1,4 +1,5 @@
-from dynamic_preferences.types import StringPreference, LongStringPreference
+from dynamic_preferences.types import \
+    StringPreference, LongStringPreference, IntegerPreference
 from dynamic_preferences import global_preferences_registry
 
 
@@ -425,6 +426,64 @@ class HomeLead(LongStringPreference):
     default = '... the Capture the Flag Workshop of the<br>University of ' \
               'Applied Sciences in Offenburg.'
     help_text = 'Home site lead text (Default: '+default+')'
+
+
+@global_preferences_registry.register
+class EmailSMTPHost(StringPreference):
+    section = 'mail'
+    name = 'stmp_host'
+    verbose_name = 'SMTP Host'
+    default = 'localhost'
+    help_text = 'The SMTP Host you wish to send your mails with. ' \
+                '(Default: '+default+')'
+
+
+@global_preferences_registry.register
+class EmailSMTPPort(IntegerPreference):
+    section = 'mail'
+    name = 'smtp_port'
+    verbose_name = 'SMTP Port'
+    default = 25
+    help_text = 'SMTP Port (Default: '+str(default)+')'
+
+
+@global_preferences_registry.register
+class EmailSMTPUser(StringPreference):
+    section = 'mail'
+    name = 'smtp_user'
+    verbose_name = 'SMTP User'
+    default = ''
+    help_text = 'Username for the SMTP Host (Default: None)'
+
+
+@global_preferences_registry.register
+class EmailSMTPPassword(StringPreference):
+    section = 'mail'
+    name = 'smtp_password'
+    verbose_name = 'SMTP Password'
+    default = ''
+    help_text = 'Password for the SMTP Host (Default: None)'
+
+
+@global_preferences_registry.register
+class SenderEmail(StringPreference):
+    section = 'mail'
+    name = 'return_path'
+    verbose_name = 'Sender Email Address (Return-Path)'
+    default = 'ctf-backend@mailhost.xx'
+    help_text = 'Mail address used to send emails. This mail address ' \
+                'should exist for real. (Default: '+default+')'
+
+
+@global_preferences_registry.register
+class FromEmail(StringPreference):
+    section = 'mail'
+    name = 'from'
+    verbose_name = 'From Email Address and name'
+    default = 'CTF-Backend <ctf-backend@noreply>'
+    help_text = 'The Mail address the recipient ' \
+                'will see as From address. (Default: '+default+')'
+
 
 @global_preferences_registry.register
 class GoodDomains(LongStringPreference):
