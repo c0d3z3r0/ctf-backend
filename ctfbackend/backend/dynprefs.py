@@ -430,7 +430,7 @@ class HomeLead(LongStringPreference):
 @global_preferences_registry.register
 class EmailSMTPHost(StringPreference):
     section = 'mail'
-    name = 'stmp_host'
+    name = 'smtp_host'
     verbose_name = 'SMTP Host'
     default = 'localhost'
     help_text = 'The SMTP Host you wish to send your mails with. ' \
