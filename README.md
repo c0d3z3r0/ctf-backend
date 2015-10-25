@@ -54,6 +54,8 @@ deactivate
 
 Since we use a git-hook you just need to do a `git pull` inside the base directory. When there are no errors, that's all you have to do :-)
 
+A backup of your database will be stored at `/srv/ctf-backend/db.sqlite3.bak`.
+
 ~~~sh
 cd /srv/ctf-backend
 git pull

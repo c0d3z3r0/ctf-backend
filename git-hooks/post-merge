@@ -9,6 +9,8 @@ cd "$GIT_DIR/.."
 
 systemctl stop uwsgi nginx
 
+cp db.sqlite3 db.sqlite3.bak
+
 ./node_modules/.bin/bower --allow-root --config.interactive=false install
 
 . ./venv/bin/activate
@@ -21,3 +23,5 @@ deactivate
 chown -R www-data. .
 
 systemctl start uwsgi nginx
+
+echo Update done.
