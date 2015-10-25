@@ -491,3 +491,7 @@ class GoodDomains(LongStringPreference):
     verbose_name = 'Allowed Domains'
     default = ''
     help_text = 'Comma-separated list of allowed mail domains for registration'
+
+order = [BackendTitle, HomeTitle, HomeLead, Background, GoodDomains,
+         EmailSMTPHost, EmailSMTPPort, EmailSMTPUser, EmailSMTPPassword,
+         FromEmail, SenderEmail]

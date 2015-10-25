@@ -6,6 +6,12 @@ from super_inlines.admin import SuperInlineModelAdmin, SuperModelAdmin
 from .models import Category, Challenge, Flag, Hint, Solve, BuyHint, Profile, Faculty, Course
 from dynamic_preferences import global_preferences_registry as dynprefs
 from django.db.utils import OperationalError
+from django.db.models import Case, When, Value, IntegerField
+from dynamic_preferences import global_preferences_registry
+from dynamic_preferences.models import GlobalPreferenceModel
+from dynamic_preferences.admin import \
+    GlobalPreferenceAdmin as BaseGlobalPreferenceAdmin
+from .dynprefs import order
 # Register your models here.
 
 try:
@@ -87,3 +93,29 @@ class UserAdmin(UserAdmin):
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
+
+# Override dynpref admin to apply custom ordering and
+# swap name and section column
+class GlobalPreferenceAdmin(BaseGlobalPreferenceAdmin):
+    list_display = ('verbose_name', 'section', 'name',
+                    'help_text', 'raw_value')
+
+    def get_queryset(self, *args, **kwargs):
+        # Instanciate default prefs
+        global_preferences_registry.manager().all()
+
+        cases = []
+
+        for o in order:
+            cases.append(
+                When(section=o.section, name=o.name,
+                     then=Value(order.index(o)))
+            )
+
+        return super(GlobalPreferenceAdmin, self).\
+            get_queryset(*args, **kwargs).annotate(
+            pref_order=Case(*cases, output_field=IntegerField())
+        ).order_by('pref_order')
+
+admin.site.unregister(GlobalPreferenceModel)
+admin.site.register(GlobalPreferenceModel, GlobalPreferenceAdmin)
