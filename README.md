@@ -26,6 +26,9 @@ virtualenv venv
 
 ### Link config files
 
+This step is optional if you're not the CTF@HSO admin. Feel free to copy the
+configs and adapt them for your needs :-)
+
 ~~~sh
 ln -s /srv/ctf-backend/conf/uwsgi.ini /etc/uwsgi/apps-enabled/ctf-backend.ini
 ln -s /srv/ctf-backend/conf/nginx.conf /etc/nginx/sites-enabled/ctf-backend
