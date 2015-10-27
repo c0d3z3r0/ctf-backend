@@ -15,7 +15,7 @@ cp db.sqlite3 db.sqlite3.bak
 
 . ./venv/bin/activate
 pip3 install -r requirements.txt
-mkdir -p static
+mkdir -p static media
 ./manage.py collectstatic --clear --noinput --link
 ./manage.py migrate
 deactivate

@@ -26,6 +26,7 @@ class Challenge(TimeStampedModel):
         choices=[(1, 'easy'), (2, 'medium'), (3, 'hard'), (4, 'very hard')]
     )
     active = models.BooleanField(default=True)
+    file = models.FileField(blank=True)
 
     categories = models.ManyToManyField(Category)
 
@@ -39,6 +40,7 @@ class Flag(TimeStampedModel):
     stage = models.PositiveIntegerField()
     stage_description = models.TextField()
     stage_link = models.URLField(blank=True)
+    file = models.FileField(blank=True)
 
     challenge = models.ForeignKey(Challenge)
     user = models.ManyToManyField(User, through='Solve')
