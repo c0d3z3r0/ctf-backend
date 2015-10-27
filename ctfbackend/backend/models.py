@@ -20,7 +20,6 @@ class Category(TimeStampedModel):
 class Challenge(TimeStampedModel):
     name = models.CharField(max_length=50, unique=True)
     description = models.TextField()
-    link = models.URLField(blank=True)
     difficulty = models.SmallIntegerField(
         default=1,
         choices=[(1, 'easy'), (2, 'medium'), (3, 'hard'), (4, 'very hard')]
@@ -39,7 +38,6 @@ class Flag(TimeStampedModel):
     credits = models.PositiveIntegerField()
     stage = models.PositiveIntegerField()
     stage_description = models.TextField()
-    stage_link = models.URLField(blank=True)
     file = models.FileField(blank=True)
 
     challenge = models.ForeignKey(Challenge)

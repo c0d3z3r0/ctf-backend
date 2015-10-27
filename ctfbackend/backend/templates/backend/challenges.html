@@ -42,7 +42,7 @@
                         </div>
 
                         <div class="panel-body">
-                          <p>{{ chal.description }}</p>
+                          <p>{{ chal.description|urlizetrunc:40 }}</p>
                         </div>
 
                         <ul class="list-group">
@@ -57,7 +57,7 @@
                                       &nbsp;<span class="glyphicon glyphicon-ok chal-done"></span>
                                     {% endif %}
                                   </p>
-                                  <p>{{ stage.stage_description }}</p>
+                                  <p>{{ stage.stage_description|urlizetrunc:40 }}</p>
                                 </div>
                                 <!-- hints button / panel -->
                                 <div class="col-md-2 text-right">
@@ -79,7 +79,7 @@
                                                   <p><strong>Hint {{ hint.order }}</strong> ({{ hint.price }} Credits)</p>
                                                   <p>
                                                     {% if user in hint.user.all %}
-                                                      {{ hint.description }}
+                                                      {{ hint.description|urlizetrunc:40 }}
                                                     {% else %}
                                                       <a href="/chals/hint/{{ hint.pk }}/buy" class="btn btn-default">Buy Hint</a>
                                                     {% endif %}
