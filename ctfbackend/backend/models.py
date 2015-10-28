@@ -2,6 +2,7 @@ from django.db import models
 from django_extensions.db.models import TimeStampedModel
 from django.contrib.auth.models import User
 from registration.signals import user_registered
+from django.db.models import Max
 
 # Create your models here.
 
@@ -36,7 +37,7 @@ class Challenge(TimeStampedModel):
 class Flag(TimeStampedModel):
     flag = models.CharField(max_length=100, unique=True)
     credits = models.PositiveIntegerField()
-    stage = models.PositiveIntegerField()
+    stage = models.PositiveIntegerField(blank=True)
     stage_description = models.TextField(blank=True)
     file = models.FileField(blank=True)
 
@@ -45,6 +46,12 @@ class Flag(TimeStampedModel):
 
     class Meta:
         unique_together = (('stage', 'challenge'),)
+
+    def save(self, **kwargs):
+        if not self.stage:
+            max = self.challenge.flag_set.aggregate(Max("stage"))['stage__max']
+            self.stage = max + 1 if max else 1
+        super(Flag, self).save(**kwargs)
 
     def __str__(self):
         return self.flag
