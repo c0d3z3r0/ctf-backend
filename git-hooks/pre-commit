@@ -14,13 +14,19 @@ if [ "$(git symbolic-ref HEAD)" == "refs/heads/master" ]; then
 
   # Deploy check
   if [ "$NODEP" != "1" ]; then
+    debug=$(grep -oP "^DEBUG = (True|False)$" ctfbackend/settings.py)
+    sed -i'' 's/^DEBUG =.*$/DEBUG = False/' ctfbackend/settings.py
+
     if ./manage.py check --deploy 2>&1 | grep -qE '[1-9]+ issues'; then
       echo WARNING!
       echo There were deploy check errors.
       echo Check with ./manage.py check --deploy.
       echo You may want to correct them or ignore them setting NODEP=1.
+      sed -i'' 's/^DEBUG =.*$/'"$debug"'/' ctfbackend/settings.py
       exit 1
     fi
+
+    sed -i'' 's/^DEBUG =.*$/'"$debug"'/' ctfbackend/settings.py
   fi
 
   # Make migrations and check if all are added to stage
