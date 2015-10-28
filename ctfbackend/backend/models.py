@@ -38,6 +38,7 @@ class Flag(TimeStampedModel):
     flag = models.CharField(max_length=100, unique=True)
     credits = models.PositiveIntegerField()
     stage = models.PositiveIntegerField(blank=True)
+    active = models.BooleanField(default=True)
     stage_description = models.TextField(blank=True)
     file = models.FileField(blank=True)
 

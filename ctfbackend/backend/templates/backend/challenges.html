@@ -48,7 +48,7 @@
                         <ul class="list-group">
                           <!-- stages -->
                           {% for stage in chal.flag_set.all|dictsort:'stage' %}
-                            <li class="list-group-item">
+                            <li class="list-group-item {% if not stage.active %}greyout{% endif %} ">
                               <div class="row">
                                 <div class="col-md-10">
                                   <p>
@@ -57,11 +57,17 @@
                                       &nbsp;<span class="glyphicon glyphicon-ok chal-done"></span>
                                     {% endif %}
                                   </p>
-                                  <p>{{ stage.stage_description|urlizetrunc:40 }}</p>
+                                  <p>
+                                    {% if stage.active %}
+                                      {{ stage.stage_description|urlizetrunc:40 }}
+                                    {% else %}
+                                      This stage is currently not available.
+                                    {% endif %}
+                                  </p>
                                 </div>
                                 <!-- hints button / panel -->
                                 <div class="col-md-2 text-right">
-                                  {% if stage.hint_set.count > 0 %}
+                                  {% if stage.active and stage.hint_set.count > 0 %}
                                     <div class="btn-group {% if open_hint and category|isequal:chal.categories.order_by.first %}{{ stage|isequal:open_hint.flag|yesno:'open,'}}{% endif %}">
                                       <button type="button" class="btn btn-default btn-outline-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Hints <span class="caret"></span>
