@@ -10,6 +10,7 @@
     <ul class="dropdown-menu" role="menu">
       <li class="dropdown-header username">{{ user.get_username }} ({{ user.get_full_name }})</li>
       <li><a href="{# {{ url('content/stats') }} #}">User Settings</a></li>
+      <li><a href="{% url 'auth_password_change' %}">Change Password</a></li>
       <li class="divider"></li>
 
       {% if user.is_staff %}
