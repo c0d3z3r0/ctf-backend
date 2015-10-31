@@ -66,7 +66,7 @@
                               <div class="row">
                                 <div class="col-md-10">
                                   <p>
-                                    <strong>Stage {{ stage.stage }}{% if stage.stage_title %} - {{ stage.stage_title }}{% endif %}</strong> ({{ stage.credits }} Credits)
+                                    <strong>Stage {{ stage.stage }}{% if stage.title %} - {{ stage.title }}{% endif %}</strong> ({{ stage.credits }} Credits)
                                     {% if user in stage.user.all %}
                                       &nbsp;<span class="glyphicon glyphicon-ok chal-done"></span>
                                     {% endif %}
@@ -75,7 +75,7 @@
                                     <p>
                                       {% if stage.active %}
                                         {% if stage.description %}
-                                          {{ stage.stage_description|urlizetrunc:40 }}
+                                          {{ stage.description|urlizetrunc:40 }}
                                         {% endif %}
                                       {% else %}
                                         This stage is currently not available.

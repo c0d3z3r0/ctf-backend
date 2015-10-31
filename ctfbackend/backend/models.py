@@ -38,8 +38,8 @@ class Flag(TimeStampedModel):
     credits = models.PositiveIntegerField()
     active = models.BooleanField(default=True)
     stage = models.PositiveIntegerField(blank=True)
-    stage_title = models.CharField(max_length=50, unique=False, blank=True)
-    stage_description = models.TextField(blank=True)
+    title = models.CharField(max_length=50, unique=False, blank=True)
+    description = models.TextField(blank=True)
 
     challenge = models.ForeignKey(Challenge)
     user = models.ManyToManyField(User, through='Solve')
