@@ -46,14 +46,6 @@ class UserForm(BaseRegistrationForm):
 
         return self.cleaned_data['email']
 
-    def get_user_kwargs(self, **cleaned_data):
-        User = get_user_model()
-        return {
-            User.USERNAME_FIELD: cleaned_data['user']['username'],
-            'email': cleaned_data['user']['email'],
-            'password': cleaned_data['user']['password1'],
-        }
-
 
 class RegistrationForm(MultiModelForm):
     form_classes = {

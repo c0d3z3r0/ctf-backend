@@ -3,7 +3,7 @@ Django==1.8.5
 django-dynamic-preferences==0.5.4
 django-extensions==1.5.7
 django-modeladmin-reorder==0.1.2
--e git+https://github.com/c0d3z3r0/django-registration.git@495638e976b93e38ebcf5256522086171f30ac5c#egg=django_registration-origin_HEAD
+-e git+https://github.com/c0d3z3r0/django-registration.git@b421d91c5c0b1617ffdaacc6d63efb52bfeb08ef#egg=django_registration-origin_HEAD
 django-super-inlines==0.1.4
 django-widget-tweaks==1.4.1
 six==1.10.0

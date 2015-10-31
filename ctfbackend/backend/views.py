@@ -100,16 +100,15 @@ class ChallengesView(TemplateView):
         return render(request, self.template_name, context)
 
 
-# TODO: just extend User class instead of betterforms?
-# Override registration view form
+# Override registration/RegistrationView to support MultiForm for profile
 class RegistrationView(BaseRegistrationView):
     form_class = RegistrationForm
 
-    # Override registration/RegistrationView
-    def get_user_kwargs(self, **cleaned_data):
-        User = get_user_model()
-        return {
-            User.USERNAME_FIELD: cleaned_data['user']['username'],
-            'email': cleaned_data['user']['email'],
-            'password': cleaned_data['user']['password1'],
-        }
+    def register(self, form):
+        new_user = super(RegistrationView, self).register(form['user'])
+
+        profile = form['profile'].save(commit=False)
+        profile.user = new_user
+        profile.save()
+
+        return new_user
