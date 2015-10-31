@@ -41,19 +41,23 @@
                           </div>
                         </div>
 
-                        <div class="panel-body">
-                          <p>{{ chal.description|urlizetrunc:40 }}</p>
+                        {% if chal.description or chal.file_set.count %}
+                          <div class="panel-body">
+                            {% if chal.description %}
+                              <p>{{ chal.description|urlizetrunc:40 }}</p>
+                            {% endif %}
 
-                          {% if chal.file_set.count %}
-                            <p><strong>Files</strong>
-                            <ul class="list disc">
-                              {% for file in chal.file_set.all %}
-                                <li><a href="{{ file.file.url }}">{{ file.file.name|cut:'./'|truncatechars:40 }}</a></li>
-                              {% endfor %}
-                            </ul>
-                            </p>
-                          {% endif %}
-                        </div>
+                            {% if chal.file_set.count %}
+                              <p><strong>Files</strong>
+                              <ul class="list disc">
+                                {% for file in chal.file_set.all %}
+                                  <li><a href="{{ file.file.url }}">{{ file.file.name|cut:'./'|truncatechars:40 }}</a></li>
+                                {% endfor %}
+                              </ul>
+                              </p>
+                            {% endif %}
+                          </div>
+                        {% endif %}
 
                         <ul class="list-group">
                           <!-- stages -->
@@ -67,13 +71,17 @@
                                       &nbsp;<span class="glyphicon glyphicon-ok chal-done"></span>
                                     {% endif %}
                                   </p>
-                                  <p>
-                                    {% if stage.active %}
-                                      {{ stage.stage_description|urlizetrunc:40 }}
-                                    {% else %}
-                                      This stage is currently not available.
-                                    {% endif %}
-                                  </p>
+                                  {% if stage.description or not stage.active %}
+                                    <p>
+                                      {% if stage.active %}
+                                        {% if stage.description %}
+                                          {{ stage.stage_description|urlizetrunc:40 }}
+                                        {% endif %}
+                                      {% else %}
+                                        This stage is currently not available.
+                                      {% endif %}
+                                    </p>
+                                  {% endif %}
                                   {% if stage.file_set.count %}
                                     <p><strong>Files</strong>
                                     <ul class="list disc">
