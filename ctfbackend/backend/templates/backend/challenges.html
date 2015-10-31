@@ -41,10 +41,14 @@
                           </div>
                         </div>
 
-                        {% if chal.description or chal.file_set.count %}
+                        {% if chal.description or chal.file_set.count or not chal.active %}
                           <div class="panel-body">
-                            {% if chal.description %}
-                              <p>{{ chal.description|urlizetrunc:40 }}</p>
+                            {% if chal.active %}
+                              {% if chal.description %}
+                                <p>{{ chal.description|urlizetrunc:40 }}</p>
+                              {% endif %}
+                            {% else %}
+                              <p>This challenge is currently not available.</p>
                             {% endif %}
 
                             {% if chal.file_set.count and chal.active %}
