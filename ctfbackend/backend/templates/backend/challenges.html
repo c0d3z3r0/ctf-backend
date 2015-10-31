@@ -60,80 +60,80 @@
                         {% endif %}
 
                         {% if chal.active %}
-                        <ul class="list-group">
-                          <!-- stages -->
-                          {% for stage in chal.flag_set.all|dictsort:'stage' %}
-                            <li class="list-group-item {% if not stage.active %}greyout{% endif %} ">
-                              <div class="row">
-                                <div class="col-md-10">
-                                  <p>
-                                    <strong>Stage {{ stage.stage }}{% if stage.title %} - {{ stage.title }}{% endif %}</strong> ({{ stage.credits }} Credits)
-                                    {% if user in stage.user.all %}
-                                      &nbsp;<span class="glyphicon glyphicon-ok chal-done"></span>
-                                    {% endif %}
-                                  </p>
-                                  {% if stage.description or not stage.active %}
+                          <ul class="list-group">
+                            <!-- stages -->
+                            {% for stage in chal.flag_set.all|dictsort:'stage' %}
+                              <li class="list-group-item {% if not stage.active %}greyout{% endif %} ">
+                                <div class="row">
+                                  <div class="col-md-10">
                                     <p>
-                                      {% if stage.active %}
-                                        {% if stage.description %}
-                                          {{ stage.description|urlizetrunc:40 }}
-                                        {% endif %}
-                                      {% else %}
-                                        This stage is currently not available.
+                                      <strong>Stage {{ stage.stage }}{% if stage.title %} - {{ stage.title }}{% endif %}</strong> ({{ stage.credits }} Credits)
+                                      {% if user in stage.user.all %}
+                                        &nbsp;<span class="glyphicon glyphicon-ok chal-done"></span>
                                       {% endif %}
                                     </p>
-                                  {% endif %}
-                                  {% if stage.file_set.count and stage.active %}
-                                    <p><strong>Files</strong>
-                                    <ul class="list disc">
-                                      {% for file in stage.file_set.all %}
-                                        <li><a href="{{ file.file.url }}">{{ file.file.name|cut:'./'|truncatechars:40 }}</a></li>
-                                      {% endfor %}
-                                    </ul>
-                                    </p>
-                                  {% endif %}
-                                </div>
-                                <!-- hints button / panel -->
-                                <div class="col-md-2 text-right">
-                                  {% if stage.active and stage.hint_set.count > 0 %}
-                                    <div class="btn-group {% if open_hint and category|isequal:chal.categories.order_by.first %}{{ stage|isequal:open_hint.flag|yesno:'open,'}}{% endif %}">
-                                      <button type="button" class="btn btn-default btn-outline-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Hints <span class="caret"></span>
-                                      </button>
-                                      <div class="panel panel-default dropdown-menu shadow">
-                                        <div class="panel-heading">
-                                          <strong>Hints - Stage {{ stage.stage }}</strong>
-                                        </div>
-                                        <!-- hints -->
-                                        <ul class="list-group">
-                                          {% for hint in stage.hint_set.all|dictsort:'order' %}
-                                            <li class="list-group-item">
-                                              <div class="row">
-                                                <div class="col-md-11">
-                                                  <p><strong>Hint {{ hint.order }}</strong> ({{ hint.price }} Credits)</p>
-                                                  <p>
-                                                    {% if user in hint.user.all %}
-                                                      {{ hint.description|urlizetrunc:40 }}
-                                                    {% else %}
-                                                      <a href="/chals/hint/{{ hint.pk }}/buy" class="btn btn-default">Buy Hint</a>
-                                                    {% endif %}
-                                                  </p>
+                                    {% if stage.description or not stage.active %}
+                                      <p>
+                                        {% if stage.active %}
+                                          {% if stage.description %}
+                                            {{ stage.description|urlizetrunc:40 }}
+                                          {% endif %}
+                                        {% else %}
+                                          This stage is currently not available.
+                                        {% endif %}
+                                      </p>
+                                    {% endif %}
+                                    {% if stage.file_set.count and stage.active %}
+                                      <p><strong>Files</strong>
+                                      <ul class="list disc">
+                                        {% for file in stage.file_set.all %}
+                                          <li><a href="{{ file.file.url }}">{{ file.file.name|cut:'./'|truncatechars:40 }}</a></li>
+                                        {% endfor %}
+                                      </ul>
+                                      </p>
+                                    {% endif %}
+                                  </div>
+                                  <!-- hints button / panel -->
+                                  <div class="col-md-2 text-right">
+                                    {% if stage.active and stage.hint_set.count > 0 %}
+                                      <div class="btn-group {% if open_hint and category|isequal:chal.categories.order_by.first %}{{ stage|isequal:open_hint.flag|yesno:'open,'}}{% endif %}">
+                                        <button type="button" class="btn btn-default btn-outline-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                          Hints <span class="caret"></span>
+                                        </button>
+                                        <div class="panel panel-default dropdown-menu shadow">
+                                          <div class="panel-heading">
+                                            <strong>Hints - Stage {{ stage.stage }}</strong>
+                                          </div>
+                                          <!-- hints -->
+                                          <ul class="list-group">
+                                            {% for hint in stage.hint_set.all|dictsort:'order' %}
+                                              <li class="list-group-item">
+                                                <div class="row">
+                                                  <div class="col-md-11">
+                                                    <p><strong>Hint {{ hint.order }}</strong> ({{ hint.price }} Credits)</p>
+                                                    <p>
+                                                      {% if user in hint.user.all %}
+                                                        {{ hint.description|urlizetrunc:40 }}
+                                                      {% else %}
+                                                        <a href="/chals/hint/{{ hint.pk }}/buy" class="btn btn-default">Buy Hint</a>
+                                                      {% endif %}
+                                                    </p>
+                                                  </div>
                                                 </div>
-                                              </div>
-                                            </li>
-                                          {% endfor %}
-                                        </ul>
-                                        <!-- //hints -->
+                                              </li>
+                                            {% endfor %}
+                                          </ul>
+                                          <!-- //hints -->
+                                        </div>
                                       </div>
-                                    </div>
-                                  {% endif %}
-                                </div>
-                                <!-- //hints button / panel -->
+                                    {% endif %}
+                                  </div>
+                                  <!-- //hints button / panel -->
 
-                              </div>
-                            </li>
-                          {% endfor %}
-                          <!-- //stages -->
+                                </div>
+                              </li>
+                            {% endfor %}
+                            <!-- //stages -->
                           </ul>
                         {% endif %}
                       </div>
