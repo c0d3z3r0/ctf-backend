@@ -20,14 +20,14 @@ class Category(TimeStampedModel):
 
 class Challenge(TimeStampedModel):
     name = models.CharField(max_length=50, unique=True)
+    active = models.BooleanField(default=True)
     description = models.TextField(blank=True)
+    file = models.FileField(blank=True)
+
     difficulty = models.SmallIntegerField(
         default=1,
         choices=[(1, 'easy'), (2, 'medium'), (3, 'hard'), (4, 'very hard')]
     )
-    active = models.BooleanField(default=True)
-    file = models.FileField(blank=True)
-
     categories = models.ManyToManyField(Category)
 
     def __str__(self):
@@ -37,8 +37,8 @@ class Challenge(TimeStampedModel):
 class Flag(TimeStampedModel):
     flag = models.CharField(max_length=100, unique=True)
     credits = models.PositiveIntegerField()
-    stage = models.PositiveIntegerField(blank=True)
     active = models.BooleanField(default=True)
+    stage = models.PositiveIntegerField(blank=True)
     stage_title = models.CharField(max_length=50, unique=False, blank=True)
     stage_description = models.TextField(blank=True)
     file = models.FileField(blank=True)
