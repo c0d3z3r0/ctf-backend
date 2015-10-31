@@ -349,3 +349,8 @@ span.status.active { opacity: 1; }
   filter:     alpha(opacity = 50);    /* IE 6, 7, 8 */
   -ms-filter: "alpha(opacity = 50)";  /* ab IE 8 zusätzlich möglich */
 }
+
+
+.list.disc {
+  list-style-type:disc;
+}

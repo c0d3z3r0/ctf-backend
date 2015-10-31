@@ -43,6 +43,16 @@
 
                         <div class="panel-body">
                           <p>{{ chal.description|urlizetrunc:40 }}</p>
+
+                          {% if chal.file_set.count %}
+                            <p><strong>Files</strong>
+                            <ul class="list disc">
+                              {% for file in chal.file_set.all %}
+                                <li><a href="{{ file.file.url }}">{{ file.file.name|cut:'./'|truncatechars:40 }}</a></li>
+                              {% endfor %}
+                            </ul>
+                            </p>
+                          {% endif %}
                         </div>
 
                         <ul class="list-group">
@@ -64,6 +74,15 @@
                                       This stage is currently not available.
                                     {% endif %}
                                   </p>
+                                  {% if stage.file_set.count %}
+                                    <p><strong>Files</strong>
+                                    <ul class="list disc">
+                                      {% for file in stage.file_set.all %}
+                                        <li><a href="{{ file.file.url }}">{{ file.file.name|cut:'./'|truncatechars:40 }}</a></li>
+                                      {% endfor %}
+                                    </ul>
+                                    </p>
+                                  {% endif %}
                                 </div>
                                 <!-- hints button / panel -->
                                 <div class="col-md-2 text-right">

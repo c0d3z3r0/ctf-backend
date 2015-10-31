@@ -3,7 +3,8 @@ from django.contrib.admin import TabularInline, StackedInline
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 from super_inlines.admin import SuperInlineModelAdmin, SuperModelAdmin
-from .models import Category, Challenge, Flag, Hint, Solve, BuyHint, Profile, Faculty, Course
+from .models import Category, Challenge, Flag, Hint, Solve, BuyHint, Profile, \
+    Faculty, Course, File
 from dynamic_preferences import global_preferences_registry as dynprefs
 from django.db.utils import OperationalError
 from django.db.models import Case, When, Value, IntegerField
@@ -21,6 +22,18 @@ except OperationalError:
     pass
 
 
+class ChallengeFileInline(SuperInlineModelAdmin, TabularInline):
+    model = File
+    exclude = ('stage', )
+    extra = 0
+
+
+class StageFileInline(SuperInlineModelAdmin, TabularInline):
+    model = File
+    exclude = ('challenge', )
+    extra = 0
+
+
 class HintInline(SuperInlineModelAdmin, TabularInline):
     model = Hint
     extra = 0
@@ -31,7 +44,7 @@ class FlagInline(SuperInlineModelAdmin, StackedInline):
     model = Flag
     extra = 0
     ordering = ['stage']
-    inlines = [HintInline]
+    inlines = [StageFileInline, HintInline]
 
 
 class ChallengeInline(SuperInlineModelAdmin, StackedInline):
@@ -48,12 +61,17 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Challenge)
 class ChallengeAdmin(SuperModelAdmin):
-    inlines = [FlagInline]
+    inlines = [ChallengeFileInline, FlagInline]
 
 
 @admin.register(Flag)
 class FlagAdmin(admin.ModelAdmin):
-    inlines = [HintInline]
+    inlines = [StageFileInline, HintInline]
+
+
+@admin.register(File)
+class FileAdmin(admin.ModelAdmin):
+    pass
 
 
 @admin.register(Hint)

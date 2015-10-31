@@ -173,6 +173,7 @@ ADMIN_REORDER = (
         'backend.Category',
         'backend.Challenge',
         'backend.Flag',
+        'backend.File',
         'backend.Hint',
         'backend.Solve',
         'backend.BuyHint',

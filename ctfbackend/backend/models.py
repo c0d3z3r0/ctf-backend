@@ -2,6 +2,7 @@ from django.db import models
 from django_extensions.db.models import TimeStampedModel
 from django.contrib.auth.models import User
 from registration.signals import user_registered
+from django.core.validators import ValidationError
 from django.db.models import Max
 
 # Create your models here.
@@ -16,14 +17,12 @@ class Category(TimeStampedModel):
 
     def __str__(self):
         return self.name
-    
+
 
 class Challenge(TimeStampedModel):
     name = models.CharField(max_length=50, unique=True)
     active = models.BooleanField(default=True)
     description = models.TextField(blank=True)
-    file = models.FileField(blank=True)
-
     difficulty = models.SmallIntegerField(
         default=1,
         choices=[(1, 'easy'), (2, 'medium'), (3, 'hard'), (4, 'very hard')]
@@ -41,7 +40,6 @@ class Flag(TimeStampedModel):
     stage = models.PositiveIntegerField(blank=True)
     stage_title = models.CharField(max_length=50, unique=False, blank=True)
     stage_description = models.TextField(blank=True)
-    file = models.FileField(blank=True)
 
     challenge = models.ForeignKey(Challenge)
     user = models.ManyToManyField(User, through='Solve')
@@ -57,6 +55,20 @@ class Flag(TimeStampedModel):
 
     def __str__(self):
         return self.flag
+
+
+class File(TimeStampedModel):
+    file = models.FileField()
+
+    challenge = models.ForeignKey(Challenge, null=True, blank=True)
+    stage = models.ForeignKey(Flag, null=True, blank=True)
+
+    def clean(self):
+        if not self.challenge and not self.stage:
+            raise ValidationError('Either challenge or stage must be defined.')
+
+    def __str__(self):
+        return self.file.name
 
 
 class Hint(TimeStampedModel):
