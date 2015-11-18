@@ -4,11 +4,15 @@ from .models import Flag, Solve, User, Challenge, Category, Hint, BuyHint
 from django.db.models import Sum
 from django.contrib.auth import get_user_model
 import math
+import re
 from .forms import RegistrationForm
 from registration.backends.hmac.views import \
     RegistrationView as BaseRegistrationView
+from dynamic_preferences import global_preferences_registry as dynprefs
 
 # Create your views here.
+
+prefs = dynprefs.manager()
 
 
 class HomeView(TemplateView):
@@ -21,28 +25,36 @@ class SubmitView(TemplateView):
     def post(self, request):
         flag = request.POST.get('flag')
         user = request.user
+        flag_regex = prefs['ctf__flag_regex']
 
-        f = Flag.objects.filter(flag=flag).first()
-        if f:
-            if not f.user.filter(username=user.get_username()):
-                message = {
-                    'type': 'success',
-                    'glyph': 'ok',
-                    'text': 'Success!'
-                }
-                Solve(flag=f, user=user).save()
-            else:
-                message = {
-                    'type': 'info',
-                    'glyph': 'repeat',
-                    'text': 'Flag already submitted.'
-                }
-        else:
+        if not re.match(flag_regex, flag):
             message = {
                 'type': 'danger',
                 'glyph': 'remove',
-                'text': 'Flag does not exist!'
+                'text': 'Wrong flag format!'
             }
+        else:
+            f = Flag.objects.filter(flag=flag).first()
+            if f:
+                if not f.user.filter(username=user.get_username()):
+                    message = {
+                        'type': 'success',
+                        'glyph': 'ok',
+                        'text': 'Success!'
+                    }
+                    Solve(flag=f, user=user).save()
+                else:
+                    message = {
+                        'type': 'info',
+                        'glyph': 'repeat',
+                        'text': 'Flag already submitted.'
+                    }
+            else:
+                message = {
+                    'type': 'danger',
+                    'glyph': 'remove',
+                    'text': 'Flag does not exist!'
+                }
 
         context = {'message': message}
         return render(request, self.template_name, context)

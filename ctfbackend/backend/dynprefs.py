@@ -492,6 +492,16 @@ class GoodDomains(LongStringPreference):
     default = ''
     help_text = 'Comma-separated list of allowed mail domains for registration'
 
+
+@global_preferences_registry.register
+class FlagRegex(StringPreference):
+    section = 'ctf'
+    name = 'flag_regex'
+    verbose_name = 'Flag Format'
+    default = '^flag_[a-fA-F0-9]{40}_$'
+    help_text = 'Regex for flag format validation'
+
+
 order = [BackendTitle, HomeTitle, HomeLead, Background, GoodDomains,
          EmailSMTPHost, EmailSMTPPort, EmailSMTPUser, EmailSMTPPassword,
-         FromEmail, SenderEmail]
+         FromEmail, SenderEmail, FlagRegex]
