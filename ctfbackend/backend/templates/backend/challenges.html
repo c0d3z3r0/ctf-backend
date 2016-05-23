@@ -7,9 +7,9 @@
     <h2>Challenges</h2>
     <p>&nbsp;</p>
 
-    <div class="col-md-2"></div>
+    <div class="col-md-1"></div>
 
-    <div class="col-md-8">
+    <div class="col-md-10">
       <!-- categories -->
       {% for category in categories|dictsort:'name' %}
         <div class="panel panel-default shadow">
@@ -20,13 +20,13 @@
           <ul class="list-group">
             <li class="list-group-item">
               <!-- challenges -->
-              {% for chals in challenges|catfilter:category|splitlist:10 %}
-                <div class="btn-group-chal">
+              {% for chals in challenges|catfilter:category|splitlist:6 %}
+                <div class="btn-group-chal center">
                   {% for chal in chals %}
                     <!-- challenge button -->
                     <div class="btn-group {% if open_hint and category|isequal:chal.categories.order_by.first %}{{ chal|isequal:open_hint.flag.challenge|yesno:'open,'}}{% endif %}">
                       <button type="button" class="btn btn-default btn{{ chal.progress|isequal:100|yesno:'-,-outline-' }}{{ chal.difficulty|difficulty }} btn-chal dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ chal.credits }} <span class="caret"></span>
+                        {{ chal.name }} <span class="caret"></span>
                       </button>
                       <!-- challenge -->
                       <div class="panel panel-{{ chal.difficulty|difficulty }} dropdown-menu shadow">
@@ -155,7 +155,7 @@
       <!-- //categories -->
     </div>
 
-    <div class="col-md-2"></div>
+    <div class="col-md-1"></div>
 
 
   </div>
