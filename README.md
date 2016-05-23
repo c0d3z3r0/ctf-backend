@@ -74,6 +74,6 @@ You should ***NOT*** make any changes to the cloned git repo if you do not know 
 
 ## License
 
-Copyright (C) 2015 Michael Niewöhner
+Copyright (C) 2016 Michael Niewöhner
 
-This is open source software, licensed under GPLv2. See the file LICENSE for details.
+This is open source software, licensed under AGPLv3. See the file LICENSE for details.
