@@ -5,7 +5,8 @@ from django.conf import settings
 from django.core.mail.backends.smtp import EmailBackend as BaseEmailBackend
 from django.core.mail.message import sanitize_address
 
-from dynamic_preferences import global_preferences_registry as dynprefs
+from dynamic_preferences.registries import \
+    global_preferences_registry as dynprefs
 
 prefs = dynprefs.manager()
 

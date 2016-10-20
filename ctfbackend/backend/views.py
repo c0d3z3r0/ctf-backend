@@ -8,7 +8,8 @@ import re
 from .forms import RegistrationForm
 from registration.backends.hmac.views import \
     RegistrationView as BaseRegistrationView
-from dynamic_preferences import global_preferences_registry as dynprefs
+from dynamic_preferences.registries import \
+    global_preferences_registry as dynprefs
 
 # Create your views here.
 

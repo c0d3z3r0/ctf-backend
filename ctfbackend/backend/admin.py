@@ -5,10 +5,10 @@ from django.contrib.auth.models import User
 from super_inlines.admin import SuperInlineModelAdmin, SuperModelAdmin
 from .models import Category, Challenge, Flag, Hint, Solve, BuyHint, Profile, \
     Faculty, Course, File
-from dynamic_preferences import global_preferences_registry as dynprefs
 from django.db.utils import OperationalError
 from django.db.models import Case, When, Value, IntegerField
-from dynamic_preferences import global_preferences_registry
+from dynamic_preferences.registries import \
+    global_preferences_registry as dynprefs
 from dynamic_preferences.models import GlobalPreferenceModel
 from dynamic_preferences.admin import \
     GlobalPreferenceAdmin as BaseGlobalPreferenceAdmin
@@ -120,7 +120,7 @@ class GlobalPreferenceAdmin(BaseGlobalPreferenceAdmin):
 
     def get_queryset(self, *args, **kwargs):
         # Instanciate default prefs
-        global_preferences_registry.manager().all()
+        dynprefs.manager().all()
 
         cases = []
 

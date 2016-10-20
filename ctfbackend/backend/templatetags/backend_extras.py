@@ -1,5 +1,6 @@
 from django import template
-from dynamic_preferences import global_preferences_registry
+from dynamic_preferences.registries import \
+    global_preferences_registry as dynprefs
 
 register = template.Library()
 

@@ -1,9 +1,10 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from django.utils.translation import ugettext_lazy as _
-from registration.forms import \
-    RegistrationForm as BaseRegistrationForm, DUPLICATE_EMAIL
-from dynamic_preferences import global_preferences_registry as dynprefs
+from registration.forms import RegistrationForm as BaseRegistrationForm
+from registration.validators import DUPLICATE_EMAIL
+from dynamic_preferences.registries import \
+    global_preferences_registry as dynprefs
 from .models import Profile
 from betterforms.multiform import MultiModelForm
 

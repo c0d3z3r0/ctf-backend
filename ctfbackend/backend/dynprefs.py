@@ -1,6 +1,6 @@
 from dynamic_preferences.types import \
     StringPreference, LongStringPreference, IntegerPreference
-from dynamic_preferences import global_preferences_registry
+from dynamic_preferences.registries import global_preferences_registry
 
 
 @global_preferences_registry.register
